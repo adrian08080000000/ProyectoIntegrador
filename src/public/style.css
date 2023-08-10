@@ -1,0 +1,287 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+table,
+td,
+th {
+    border: 1px solid gray;
+}
+
+th {
+    padding: 10px 15px;
+    font-size: 13px;
+}
+
+td {
+
+
+    font-size: 13px;
+
+    width: 100px;
+    /* Ancho del contenedor padre */
+    height: 50px;
+    /* Altura del contenedor padre */
+    border: 1px solid #ccc;
+    overflow: hidden;
+    /* Permite que el contenido salga del contenedor */
+    position: relative;
+
+}
+
+.clase_direccion {
+    position: absolute;
+    /* Establece la posición del elemento como absoluta */
+    top: 0;
+    /* Coloca el texto en la parte superior del contenedor */
+    left: 0;
+    /* Coloca el texto en la parte izquierda del contenedor */
+    width: auto;
+    /* Permite que el ancho del texto sea dinámico y se adapte al contenido */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(248, 248, 248);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(196, 212, 196, 0.671);
+}
+
+
+tr {
+
+    width: 50px;
+    /* Ajusta el ancho del contenedor según tus necesidades */
+
+
+    height: 30px;
+    /* Ajusta la altura del contenedor según tus necesidades */
+
+
+    overflow: auto;
+    /* Mostrar la barra de scroll cuando el contenido excede el límite */
+    border: 1px solid #ccc;
+
+
+
+}
+
+h2 {
+    position: absolute;
+}
+
+tbody {
+    white-space: nowrap;
+    /* Evita que el texto haga saltos de línea */
+    overflow: hidden;
+    /* Oculta el contenido que sobrepasa el ancho del contenedor */
+    text-overflow: ellipsis;
+    /* Muestra puntos suspensivos al final del texto oculto */
+    width: 60px;
+    /* Ancho máximo del contenedor donde se mostrará el texto */
+    border: 1px solid #ccc;
+    /* Solo para visualizar el contenedor */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.style_delete {
+    text-decoration: none;
+    background-color: rgb(202, 26, 26);
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.style_delete:hover {
+    background-color: rgb(216, 74, 74);
+}
+
+.style_edit {
+    text-decoration: none;
+    background-color: rgb(31, 103, 211);
+    padding: 10px 15px;
+    color: rgb(255, 255, 255);
+    margin-right: 6px;
+    cursor: pointer;
+
+}
+
+.style_edit:hover {
+    background-color: rgb(45, 114, 218);
+}
+
+button {
+    border: none;
+    background-color: rgb(22, 173, 47);
+    padding: 10px 15px;
+    color: rgb(255, 255, 255);
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+input {
+    height: 30px;
+    font-size: 18px;
+}
+
+.form_socios {
+    position: relative;
+    left: 40%;
+    display: inline;
+    border: solid gray 1px;
+
+
+}
+
+
+
+
+
+
+
+
+* {
+    font-family: Verdana,
+        Geneva,
+        Tahoma,
+        sans-serif;
+}
+
+#titulo-principal {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+form {
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: 0px 0px 13px rgba(180, 180, 180, 0.61);
+    width: 50%;
+    margin: auto;
+    display: flex;
+}
+
+.imagen {
+    width: 250px;
+    height: 160px;
+
+}
+.imagen_form_estudiantil{
+    width: 250px;
+    height: 400px;
+}
+
+
+.contenedor_input {
+    margin: auto;
+}
+
+label {
+    margin-left: 10px;
+}
+
+input,
+label {
+    margin-top: 10px;
+}
+
+input {
+    height: 25px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgba(32, 121, 10, 0.541);
+    width: 95%;
+}
+
+input:hover {
+    background-color: rgba(191, 224, 183, 0.541);
+
+}
+
+.conten-enviar {
+    justify-content: center;
+    display: flex;
+}
+
+button {
+    padding: 12px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    background-color: rgb(18, 145, 18);
+    color: white;
+    border: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(33, 165, 62);
+}
+
+button:active {
+    background-color: rgb(97, 189, 117);
+}
+
+.contenedor-label_input {
+    display: flex;
+    align-items: center;
+}
+
+.linea-divisora_estudiantil {
+    margin: 10px;
+    text-align: center;
+    background-color: rgb(17, 133, 36);
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.linea-divisora_educacion {
+    text-align: center;
+    font-size: 20px;
+    color: gray;
+}
+
+.nombre {
+    color: green;
+}
+
+
+
+
+
+@media screen and (max-width:768px) {
+    .requisitos-para_socios {
+        width: 48%;
+        margin: 5px;
+    }
+
+}

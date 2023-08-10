@@ -1,0 +1,83 @@
+
+<% if(data) { %>
+    <%for (var i = 0; i < data.length; i++){%>
+    <tr>
+        
+        
+        <td class="nombre"><%= data[i].nombre %></p>
+        <p><%= data[i].apellido1 %></p>
+        <p><%= data[i].apellido2 %></p>
+        <p><%= data[i].direccion %></p>
+        <p><%= data[i].correo_electronico %></p>
+        <p><%= data[i].telefono %></p>
+        <p><%= data[i].telefono_respaldo %></p>
+        <p><%= data[i].fecha_registro %></p>
+
+        <h2>#</h2>
+        <p><%= (i + 1) %></p>
+        <h2>Cedula</h2>
+        <p><%= data[i].id_cedula %></p>
+        <h2>Nombre</h2>
+        <h2>Apellido1</h2>
+        <h2>Apellido2</h2>
+        <h2>Direccion</h2>
+        <h2>Correo electronico</h2>
+        <h2>Telefono</h2>
+        <h2>Telefono respaldo</h2>
+        <h2>fecha registro</h2>
+        <h2>Accion</h2>
+
+
+        <td>
+            <a class="style_delete" href="/delete/<%= data[i].id_cedula%>">Eliminar</a>
+            <a class="style_edit" href="/edit/<%= data[i].id_cedula%>">Actualizar</a>
+        </td>
+    </tr>
+    <%}%>
+    <%}%>
+</tbody>
+</table>
+
+
+
+
+<table>
+    <thead>
+       <tr>
+           <th>#</th>
+           <th>Cedula</th>
+           <th>Nombre</th>
+           <th>Apellido1</th>
+           <th>Apellido2</th>
+           <th>Direccion</th>
+           <th>Correo electronico</th>
+           <th>Telefono</th>
+           <th>Telefono respaldo</th>
+           <th>fecha registro</th>
+           <th>Accion</th>
+       </tr>
+    </thead>
+   <tbody>
+     <% if(data) { %>
+       <%for (var i = 0; i < data.length; i++){%>
+       <tr>
+           <td><%= (i + 1) %></td>
+           <td><%= data[i].id_cedula %></td>
+           <td class="nombre"><%= data[i].nombre %></td>
+           <td><%= data[i].apellido1 %></td>
+           <td><%= data[i].apellido2 %></td>
+           <td><%= data[i].direccion %></td>
+           <td><%= data[i].correo_electronico %></td>
+           <td><%= data[i].telefono %></td>
+           <td><%= data[i].telefono_respaldo %></td>
+           <td><%= data[i].fecha_registro %></td>
+           <td>
+               <a class="style_delete" href="/delete/<%= data[i].id_cedula%>">Eliminar</a>
+               <a class="style_edit" href="/edit/<%= data[i].id_cedula%>">Actualizar</a>
+           </td>
+       </tr>
+       <%}%>
+       <%}%>
+   </tbody>
+   </table>
+   

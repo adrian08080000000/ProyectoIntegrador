@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miembro creado</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<table>
+    <thead>
+       <tr>
+           <th>#</th>
+           <th>Cedula</th>
+           <th>Nombre</th>
+           <th>Apellido1</th>
+           <th>Apellido2</th>
+           <th>Direccion</th>
+           <th>Correo electronico</th>
+           <th>Telefono</th>
+           <th>Telefono respaldo</th>
+           <th>fecha registro</th>
+           <th>Accion</th>
+       </tr>
+    </thead>
+   <tbody>
+     <% if(data) { %>
+       <%for (var i = 0; i < data.length; i++){%>
+       <tr>
+           <td><%= (i + 1) %></td>
+           <td><%= data[i].id_cedula %></td>
+           <td class="nombre"><%= data[i].nombre %></td>
+           <td><%= data[i].apellido1 %></td>
+           <td><%= data[i].apellido2 %></td>
+           <td  > <h3 class="clase_direccion"><%= data[i].direccion %></h3></td>
+           <td><%= data[i].correo_electronico %></td>
+           <td><%= data[i].telefono %></td>
+           <td><%= data[i].telefono_respaldo %></td>
+           <td><%= data[i].fecha_registro %></td>
+           <td>
+               <a class="style_delete" href="/delete/<%= data[i].id_cedula%>">Eliminar</a>
+        
+               <a class="style_edit" href="/edit/<%= data[i].id_cedula%>">Actualizar</a>
+            </td>
+       </tr>
+       <%}%>
+       <%}%>
+   </tbody>
+   </table>
+
+
+   <a href="/">Create Nuevo Miembro</a>
+  
+</body>
+</html>

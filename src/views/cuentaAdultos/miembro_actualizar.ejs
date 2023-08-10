@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' type='text/css' media='screen' href='style.css'>
+    <title>Actualizar Mienbro</title>
+    
+</head>
+<body>
+
+
+<form action="/update/<%= data.id_cedula %>" method="post">
+
+        <p class="linea-divisora_estudiantil">Afiliacion cuenta para adultos</p>
+ 
+
+      <label for="">Cedula</label>
+      <input type="text" id="nombre" ondblclick="habilitarEdicion(this)" readonly  required name="id_cedula" value="<%= data.id_cedula%>"> 
+        
+      
+      <label for="">Nombre</label>
+      <input type="text" required name="nombre" value="<%= data.nombre%>"><br>
+        <label for="">Apellido1</label>
+        <input type="text" required name="apellido1" value="<%= data.apellido1%>">  
+        <label for="">Apellido2</label>
+        <input type="text" required name="apellido2" value="<%= data.apellido2%>">
+        <br>
+      
+      <!-- 
+      <div class="contenedor-label_input" >
+        <label for="" >Sexo</label>
+            <label for="">Hombre</label >
+            <input type="radio" name="sexo" class="left-radio">
+               <label for="">Mujer</label>
+                <input type="radio" name="sexo"> 
+           <label for="">Otros</label>
+           <input type="radio" name="sexo" placeholder="Apellido"> <br>
+      </div>
+      -->
+      
+      <!--
+      <div class="contenedor-label_input">
+        <label for="">Estado civil: </label>
+            <label for="">Soltero/a</label>
+            <input type="radio" required name="estadoCivil">
+                <label for="">Casado/a</label>
+                <input type="radio" required name="estadoCivil">
+            <label for="">Union libre</label>
+            <input type="radio" required name="estadoCivil"> 
+      </div>
+      -->
+      <!-- 
+      <label for="">Fecha de nacimiento</label>
+      <input type="date" required> <br>
+      -->
+      
+      <label for="">Direccción</label>
+      <input type="text" class="input-direccion" name="direccion" required value="<%= data.direccion%>"> <br>
+      
+      
+      <label for="">Correo Eletronico</label>
+      <input type="email" required name="correo_electronico" value="<%= data.correo_electronico%>"> <br>
+  
+      
+      <label for="">Teléfono Celular</label>
+      <input type="text" required name="telefono" value="<%= data.telefono%>">
+          <label for="">Telefono resplado</label>
+          <input type="text" name="telefono_respaldo" value="<%= data.telefono_respaldo%>">
+      <br>
+   
+      <label for="">Fecha registro</label>
+      <input type="text" name="fecha_registro" value="<%= data.fecha_registro%>"> <br>
+     
+      
+
+        <button style="color:green;"  class="style_update" type="submit">Actualizar</button>
+       
+    </form>
+
+
+
+<script>
+
+    
+    function habilitarEdicion(inputField) {
+        inputField.removeAttribute("readonly");
+        inputField.focus();
+      }
+      
+      // Event listener para detectar cuando se hace clic fuera del campo de entrada.
+      document.addEventListener("click", function(event) {
+        // Obtener el elemento que recibió el clic.
+        var clickedElement = event.target;
+      
+        // Verificar si el elemento hace parte de un campo de entrada y no es el mismo campo que estamos editando.
+        if (clickedElement.tagName === "INPUT" && clickedElement !== document.activeElement) {
+          // Deseleccionar cualquier campo de entrada activo y volver a colocar el atributo "readonly".
+          document.activeElement.blur();
+          document.activeElement.setAttribute("readonly", "true");
+        }
+      });
+      
+</script>
+
+
+</body>
+</html>
