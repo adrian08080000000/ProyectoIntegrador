@@ -38,6 +38,30 @@
         
                         <li class="list__inside">
                           <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+
+            <a href="nav.html">
+                <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
+              </a> 
+
+          <ul class="list">
+      
+              <li class="list__item">
+                  <div class="list__button">
+                      <img src="./recursos/icon/dashboard.svg" class="list__img">
+                      <a href="/" class="nav__link">Inicio</a>
+                  </div>
+              </li>
+      
+              <li class="list__item list__item--click">
+                  <div class="list__button list__button--click">
+                      <img src="./recursos/icon/docs.svg" class="list__img">
+                      <a href="#" class="nav__link">Mantenimiento</a>
+                      <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                  </div>
+      
+                  <ul class="list__show">
+                      <li class="list__inside">
+                          <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
                       </li>
                       <li class="list__inside">
                         <a href="#" class="nav__link nav__link--inside">Prestamos</a>
@@ -73,18 +97,19 @@
                           <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
                       </div>
                   </li>
-                
-        
         </nav>
-      
-      <header class="header">
+    </aside>
+
+
+    <section>
+      <!-- <header class="header">
         <% if (typeof username !== 'undefined') { %>
             <p>Bienvenido, <%= username %>!</p>
         <% } else { %>
             <p>No has iniciado sesión.</p>
         <% } %>
       
-      </header>
+      </header> -->
       
       <main class="principal">
 
@@ -149,7 +174,7 @@
    
 
       </main>
-      </aside>
+</section>
 
       <script src="./recursos/javaScript/barraLateral.js"></script>
       <script src="./recursos/javaScript/tabla.js"></script>
