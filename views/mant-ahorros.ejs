@@ -9,80 +9,80 @@
     <title>Mantenimiento Ahorros | BENJAMIN</title>
 </head>
 <body>
-    <aside class="nav-header">
-        <nav class="nav">
+  <aside class="nav-header">
+    <nav class="nav">
+  
+      <a href="/">
+        <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
+      </a> 
+  
+      <ul class="list">
+  
+        <li class="list__item">
+          <div class="list__button">
+              <img src="./recursos/icon/dashboard.svg" class="list__img">
+              <a href="/" class="nav__link">Inicio</a>
+          </div>
+      </li>
+  
+      <li class="list__item list__item--click">
+        <div class="list__button list__button--click">
+            <img src="./recursos/icon/docs.svg" class="list__img">
+            <a href="#" class="nav__link">Mantenimiento</a>
+            <img src="./recursos/icon/arrow.svg" class="list__arrow">
+        </div>
+        
+        <ul class="list__show">
+            <li class="list__inside">
+                <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+            </li>
+  
+            <li class="list__inside">
+                <a href="#" class="nav__link nav__link--inside">Socios</a>
+            </li>
+  
+            <li class="list__inside">
+              <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+          </li>
+          <li class="list__inside">
+            <a href="#" class="nav__link nav__link--inside">Prestamos</a>
+        </li>
+        </ul>
+  
+        </li>
+  
+        <li class="list__item list__item--click">
+          <div class="list__button list__button--click">
+              <img src="./recursos/icon/stats.svg" class="list__img">
+              <a href="#" class="nav__link">Transacciones</a>
+              <img src="./recursos/icon/arrow.svg" class="list__arrow">
+          </div>
+          <ul class="list__show">
+            <li class="list__inside">
+                <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Depositos</a>
+            </li>
+  
+            <li class="list__inside">
+                <a href="#" class="nav__link nav__link--inside"> Retiros</a>
+            </li>
+  
+            <li class="list__inside">
+              <a href="#" class="nav__link nav__link--inside">Pagos</a>
+          </li>
+         
+        </ul>
+      </li>
+        <li class="list__item">
+          <div class="list__button">
+              <img src="./recursos/icon/cerrar.svg" class="list__img">
+              <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerrar sesion</a>
+          </div>
+      </li>
+  </ul>
+    </nav>
+  </aside>
 
-          <a href="nav.html">
-            <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
-          </a> 
-          
-            <ul class="list">
-        
-                <li class="list__item">
-                    <div class="list__button">
-                        <img src="./recursos/icon/dashboard.svg" class="list__img">
-                        <a href="/" class="nav__link">Inicio</a>
-                    </div>
-                </li>
-        
-                <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <img src="./recursos/icon/docs.svg" class="list__img">
-                        <a href="#" class="nav__link">Mantenimiento</a>
-                        <img src="./recursos/icon/arrow.svg" class="list__arrow">
-                    </div>
-                    
-                    <ul class="list__show">
-                        <li class="list__inside">
-                            <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
-                        </li>
-        
-                        <li class="list__inside">
-                            <a href="#" class="nav__link nav__link--inside"> Socios</a>
-                        </li>
-        
-                        <li class="list__inside">
-                          <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
-                      </li>
-                      <li class="list__inside">
-                        <a href="#" class="nav__link nav__link--inside">Prestamos</a>
-                    </li>
-                    </ul>
-        
-                    </li>
-        
-                    <li class="list__item list__item--click">
-                      <div class="list__button list__button--click">
-                          <img src="./recursos/icon/stats.svg" class="list__img">
-                          <a href="#" class="nav__link">Transacciones</a>
-                          <img src="./recursos/icon/arrow.svg" class="list__arrow">
-                      </div>
-                      <ul class="list__show">
-                        <li class="list__inside">
-                            <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Deposito</a>
-                        </li>
-        
-                        <li class="list__inside">
-                            <a href="#" class="nav__link nav__link--inside"> Retiro</a>
-                        </li>
-        
-                        <li class="list__inside">
-                          <a href="#" class="nav__link nav__link--inside">Pago</a>
-                      </li>
-                     
-                    </ul>
-                  </li>
-                    <li class="list__item">
-                      <div class="list__button">
-                          <img src="./recursos/icon/dashboard.svg" class="list__img">
-                          <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
-                      </div>
-                  </li>
-                
-        
-        </nav>
 
-      
       <header class="header">
         <% if (typeof username !== 'undefined') { %>
             <p>Bienvenido, <%= username %>!</p>
@@ -96,10 +96,10 @@
 
         <div class="card-header">
             
-            <h1>Mantenimiento de Cuenta de Ahorro:</h1>
+            <h2>Mantenimiento de Cuenta de Ahorro:</h2>
             <div class="div1-ahorro"> 
                 <p>Creacion de Cuenta de Ahorro</p>
-                <a href="/creacion-Ahorro"><button>crear</button></a>
+                <a href="/creacion-Ahorro"><button class="btn btn-primary">Crear</button></a>
             </div>
         <div>
             <table  class="table table-bordered table-striped text-center">
@@ -129,7 +129,7 @@
    
 
       </main>
-      </aside>
+
 
       <script src="./recursos/javaScript/barraLateral.js"></script>
       <script src="./recursos/javaScript/tabla.js"></script>
