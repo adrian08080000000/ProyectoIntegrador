@@ -6,7 +6,7 @@
     <link rel="icon" href="../public/icon/icon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../recursos/css/index.css">
     <link rel="stylesheet" href="../recursos/css/tabla.css">
-    <title>Realizar Depositos | BENJAMIN</title>
+    <title>Realizar Retiro| BENJAMIN</title>
 </head>
 <body>
     <aside class="nav-header">
@@ -79,23 +79,23 @@
         
         </nav>
       </aside>
-      
-      <header class="header">
-        <% if (typeof username !== 'undefined') { %>
-            <p>Bienvenido, <%= username %>!</p>
-        <% } else { %>
-            <p>No has iniciado sesión.</p>
-        <% } %>
-      
-      </header>
+
+              <header class="header">
+            <% if (typeof username !== 'undefined') { %>
+                <p>Bienvenido, <%= username %>!</p>
+            <% } else { %>
+                <p>No has iniciado sesión.</p>
+            <% } %>
+          
+          </header>
 
       <main class="principal">
 
         <div class="card-header">
             
-            <h1>Deposito cuenta de Ahorro:</h1>
+            <h1>Retiro cuenta de Ahorro:</h1>
 
-            <form  action="/realizar-deposito" method="post">
+            <form  action="/realizar-retiro" method="post">
                 
                 <div class="mb-3">
                     <label class="form-label" id="nombre">Coloque el numero de la cuenta de ahorro:</label>
@@ -103,11 +103,11 @@
                 </div>
                 
                 <div class="mb-3" >
-                    <label class="form-label" for="monto" id="monto">Monto a depositar:</label>
+                    <label class="form-label" for="monto" id="monto">Monto a Retirar:</label>
                     <input class="form-control" type="text"  id="numero2" name="monto"> 
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Realizar deposito</button>
+                <button type="submit" class="btn btn-primary">Realizar retiro</button>
                
         </form>
         
