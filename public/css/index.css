@@ -11,16 +11,25 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-.nav{
-    width: 300px;
-    height: 100%;
+.nav-header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    background: #fff;
     border-right: rgb(230, 230, 230) solid 1px;
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .nav__link{
     color: #303440;
     display: block;
-    padding: 15px 0;
+    padding: 8px 0;
     text-decoration: none;
 }
 
@@ -34,14 +43,18 @@ body{
     background: #F6F8FA;
 }
 
+.logo{
+    width: 200px;
+    height: 200px;
+    margin-left: 2.1em;
+    margin-top: 1em; 
+}
+
 .list{
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     border-radius: 0 16px 16px 0;
-    background: #fff;
+    margin-top: 1.5em;
 }
 
 .list__item{
@@ -63,10 +76,6 @@ body{
     margin: 0 auto;
 }
 
-.arrow .list__arrow{
-    transform: rotate(90deg);
-}
-
 .list__arrow{
     margin-left: auto;
     transition: transform .3s;
@@ -81,46 +90,7 @@ body{
     height: 0;
 }
 
-.header{
-    
-    width: 76%;
-    height: 80px;
-    background-color: green;
-
-}
-
-.nav-header{
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 100px;
-    margin-left: 12px;
-    
-}
-
-
-.principal{
-position: absolute;
-top: 10%;
-left: 24%;
-
-width: 950px;
-height: auto;
-margin-bottom: 100px;
-
-}
-.p1{
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    font-weight: bold;
-    margin: 15px;
-
-}
-.p2{
-    font-size: 30px;
-    padding: 30px;
-    font-weight: bold;
-}
-
-.div1-ahorro{
-    display: flex;
+section{
+    margin-left: 15em;
+    margin-right: 2em;
 }
