@@ -123,6 +123,12 @@ header p{
 }
 
 
+li a:visited,
+li a:hover,  
+li a:active{
+    text-decoration: none;
+}
+
 /* .p2{
     font-size: 30px;
     padding: 30px;
