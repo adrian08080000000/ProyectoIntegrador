@@ -25,6 +25,7 @@ import {autSesion} from './controller/loginControlador.mjs';
 
 import { autLogin,sesion ,Aut,logAut} from './controller/loginControlador.mjs';
 import {registroEmpleados ,editEmp} from './controller/mant-empleados.mjs'
+import { CreaAhorro } from './controller/mant-ahorroControlador.mjs';
 
 app.use(sesion)
 
@@ -35,9 +36,15 @@ import {rutas}from './routes/loginRutas.mjs';
 import { conection } from './database/db.mjs';
 app.get('/login',rutas);
 app.get('/logAut',autSesion,logAut);
-app.get('/mantenimiento-socios',rutas)
-app.get('/socios-creacion',autSesion,rutas)
-app.get('/mantenimiento-empleados',rutas)
+app.get('/mantenimiento-socios',rutas);
+app.get('/socios-creacion',autSesion,rutas);
+app.get('/mantenimiento-empleados',rutas);
+app.get('/mantenimiento-ahorros',rutas);
+app.get('/creacion-ahorro',rutas);
+
+
+//creacion de cuenta de ahorro
+app.post('/mantenimiento-ahorros',CreaAhorro)
 
 //registro
 
@@ -67,5 +74,5 @@ app.post('/editar/:id',editEmp)
   
 
 app.listen(8001,(request, response) => {
-    console.log("Escuchando en el puerto 8000")
+    console.log("Escuchando en el puerto 8001")
 })

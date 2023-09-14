@@ -6,7 +6,7 @@ export const rutaMantEmpleados = {};
 
 rutaMantEmpleados.mantEmpl = (req, res) => {
   if (req.session.loggedin) {
-    const username = req.session.name ? req.session.name.loginUsuarios : '';
+    const username = req.session.name ? req.session.name.loginUsuarios : ''; 
     conection.query('SELECT * FROM Usuarios', (error, results) => {
       if (error) {
         console.error('Error al obtener datos de Usuarios:', error);

@@ -120,3 +120,7 @@ margin-bottom: 100px;
     padding: 30px;
     font-weight: bold;
 }
+
+.div1-ahorro{
+    display: flex;
+}
