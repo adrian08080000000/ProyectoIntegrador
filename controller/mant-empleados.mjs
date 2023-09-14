@@ -12,7 +12,6 @@ rutaMantEmpleados.mantEmpl = (req, res) => {
         console.error('Error al obtener datos de Usuarios:', error);
         res.status(500).send('Error interno del servidor');
       } else {
-
         res.render('mant-empleados.ejs', { usuarios: results, username });
       }
     });

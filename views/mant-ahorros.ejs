@@ -108,17 +108,15 @@
                 </thead>
                 <tbody>
                     <% usuarios.forEach(cuentaahorros => { %>
-                        <tr>
-                          <td><%= cuentaahorros.idCuentaAhorros %></td>
-                          <td><%= cuentaahorros.cuentaSocio %></td>
-                          <td><%= cuentaahorros.saldo %></td>
-                          <td><%= cuentaahorros.fechaCreacion  %> </td>
-                          <td><%= cuentaahorros.estado %> </td>                         
-                        </tr>
-                      <% }); %>
-
-                  </tr>
-                </tbody>
+                      <tr>
+                        <td><%= cuentaahorros.idCuentaAhorros %></td>
+                        <td><%= cuentaahorros.cuentaSocio %></td>
+                        <td><%= cuentaahorros.saldo %></td>
+                        <td><%= cuentaahorros.fechaCreacion %></td>
+                        <td><%= cuentaahorros.estado %></td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
               </table>
         </div>
 
