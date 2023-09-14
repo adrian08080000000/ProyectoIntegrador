@@ -20,8 +20,6 @@ export const sesion=session({
 export const autLogin=async(req,res)=>{
     const userName = req.body.userName;
     const contra = req.body.contra;
-    
-
     let contraHaash = await bcryptjs.hash(contra , 8);
     
     conection.query('SELECT * FROM Usuarios WHERE loginUsuarios = ?', [userName], async (error, results) => {
@@ -80,20 +78,47 @@ export const autLogin=async(req,res)=>{
 // Controlador de autenticación
 export const Aut = (req, res, error, sesionCerrada = false) => {
   if (req.session.loggedin) {
-    const username = req.session.name ? req.session.name.loginUsuarios : ''; 
-    res.render('index.ejs', {
-      login: true,
-      name: username,
-      error: error,
-      sesionCerrada: sesionCerrada // Pasa sesionCerrada a la vista
+    const username = req.session.name ? req.session.name.loginUsuarios : '';
+    // Realiza una consulta para obtener el permiso del usuario desde la DB
+    conection.query('SELECT permisos FROM usuarios WHERE loginUsuarios= ?', [username], (error, results) => {
+        if (error) {
+            console.error('Error al obtener el permiso del usuario:', error);
+        } else {
+            // Supongamos que el permiso se encuentra en results[0].permisos
+            const permisoUsuario = results[0].permisos;
+            res.render('index.ejs', {
+              login: true,
+              name: username,
+              error: error,
+              sesionCerrada: sesionCerrada,
+              permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+            });
+        }
     });
   } else {
     res.render('login.ejs', {
       error: error,
-      sesionCerrada: sesionCerrada // Pasa sesionCerrada a la vista
+      sesionCerrada: sesionCerrada
     });
   }
 };
+
+// export const Aut = (req, res, error, sesionCerrada = false) => {
+//   if (req.session.loggedin) {
+//     const username = req.session.name ? req.session.name.loginUsuarios : '';
+//     res.render('index.ejs', {
+//       login: true,
+//       name: username,
+//       error: error,
+//       sesionCerrada: sesionCerrada // Pasa sesionCerrada a la vista
+//     });
+//   } else {
+//     res.render('login.ejs', {
+//       error: error,
+//       sesionCerrada: sesionCerrada // Pasa sesionCerrada a la vista
+//     });
+//   }
+// };
 // controlador de cierre de session 
 
 export const logAut=(req,res)=>{
@@ -127,3 +152,4 @@ export const cerrarsesion = ('/cerrar-sesion', (req, res) => {
     }
   });
 });
+

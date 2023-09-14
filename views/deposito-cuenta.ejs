@@ -23,11 +23,13 @@
                 </li>
         
                 <li class="list__item list__item--click">
-                    <div class="list__button list__button--click">
-                        <img src="./recursos/icon/docs.svg" class="list__img">
-                        <a href="#" class="nav__link">Mantenimiento</a>
-                        <img src="./recursos/icon/arrow.svg" class="list__arrow">
-                    </div>
+                    <% if (permisoUsuario === 'Admin') { %>
+                        <div class="list__button list__button--click">
+                            <img src="./recursos/icon/docs.svg" class="list__img">
+                            <a href="#" class="nav__link">Mantenimiento</a>
+                            <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                        </div>
+                    <% } %>
                     
                     <ul class="list__show">
                         <li class="list__inside">
