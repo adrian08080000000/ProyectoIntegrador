@@ -22,8 +22,9 @@ rutasahorros.ahorros = (req, res) => {
 
 rutasahorros.CreacionAhorro = (req, res) => {
     if (req.session.loggedin) {
-        const username = req.session.name ? req.session.name.loginUsuarios : ''; 
-        res.render('crea-Ahorro.ejs', { username });
+        const username = req.session.name ? req.session.name.loginUsuarios : '';
+        const errorMensaje = '';
+        res.render('crea-Ahorro.ejs', { username,error: errorMensaje});
     } else {
         res.redirect('/login');
 
@@ -75,7 +76,12 @@ export const CreaAhorro = (req, res) => {
                     }
                 });
             } else {
-                console.log('No se encontraron socios con esa cédula.');
+                const username = req.session.name ? req.session.name.loginUsuarios : '';
+                const errorMensaje = 'No se encontraron socios con esa cédula.';
+                res.render('crea-Ahorro.ejs', {
+                    username,
+                    error: errorMensaje,
+                 }); 
             }
         }
     });

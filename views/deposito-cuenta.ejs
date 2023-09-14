@@ -6,7 +6,7 @@
     <link rel="icon" href="../public/icon/icon.svg" type="image/x-icon">
     <link rel="stylesheet" href="../recursos/css/index.css">
     <link rel="stylesheet" href="../recursos/css/tabla.css">
-    <title>Crear Ahorros | BENJAMIN</title>
+    <title>Realizar Depositos | BENJAMIN</title>
 </head>
 <body>
     <aside class="nav-header">
@@ -77,7 +77,6 @@
         
         </nav>
 
-      
       <header class="header">
         <% if (typeof username !== 'undefined') { %>
             <p>Bienvenido, <%= username %>!</p>
@@ -91,20 +90,22 @@
 
         <div class="card-header">
             
-            <h1>Creacion de Cuenta de Ahorro:</h1>
+            <h1>Deposito cuenta de Ahorro:</h1>
 
-            <form  action="/mantenimiento-ahorros" method="post">
+            <form  action="/realizar-deposito" method="post">
+                
                 <div class="mb-3">
-                    <label class="form-label" id="nombre">Coloque su cedula:</label>
-                <input class="form-control" type="text" name="cedula" id="numero" maxlength="11">
+                    <label class="form-label" id="nombre">Coloque el numero de la cuenta de ahorro:</label>
+                <input class="form-control" type="text" name="cuenta" id="numero"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
                 </div>
                 
                 <div class="mb-3" >
-                    <label class="form-label" for="monto" id="monto">Monto inicial:</label>
+                    <label class="form-label" for="monto" id="monto">Monto a depositar:</label>
                     <input class="form-control" type="text"  id="numero2" name="monto"> 
                 </div>
                 
-                <button type="submit" class="btn btn-primary">Crear</button>
+                <button type="submit" class="btn btn-primary">Realizar deposito</button>
+               
         </form>
         
         <% if (error) { %>
