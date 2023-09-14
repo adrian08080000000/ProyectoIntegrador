@@ -1,4 +1,4 @@
-import mysql from 'mysql';
+import mysql from 'mysql2';
 
 import dotEnv from 'dotenv';
 dotEnv.config({path: './env/.env'});
