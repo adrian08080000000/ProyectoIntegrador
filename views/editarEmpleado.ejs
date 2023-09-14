@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Empleado | BENJAMIN</title>
+</head>
+<body>
+    <aside class="nav-header">
+        <nav class="nav">
+
+          <ul class="list">
+      
+              <li class="list__item">
+                  <div class="list__button">
+                      <img src="./recursos/icon/dashboard.svg" class="list__img">
+                      <a href="/" class="nav__link">Inicio</a>
+                  </div>
+              </li>
+      
+              <li class="list__item list__item--click">
+                  <div class="list__button list__button--click">
+                      <img src="./recursos/icon/docs.svg" class="list__img">
+                      <a href="#" class="nav__link">Mantenimiento</a>
+                      <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                  </div>
+      
+                  <ul class="list__show">
+                      <li class="list__inside">
+                          <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+                      </li>
+      
+                      <li class="list__inside">
+                          <a href="#" class="nav__link nav__link--inside">Estoy dentro</a>
+                      </li>
+                  </ul>
+      
+              </li>
+      </nav>
+      
+      <header class="header">
+        <% if (typeof username !== 'undefined') { %>
+            <p>Bienvenido, <%= username %>!</p>
+        <% } else { %>
+            <p>No has iniciado sesión.</p>
+        <% } %>
+      
+      </header>
+      
+      <main class="principal">
+        <% if(usuario) {%> 
+        <div class="card-header">
+            <h1>Modificar Datos Del Usuarios :</h1>
+        <div class="card-body">
+            <form  action="/crear-empleado" method="post">
+                <input hidden id="id" name="id" value="<%=usuario.id %> ">
+                    <div class="mb-3">
+                        <label class="form-label" id="nombre" for="nombre">Nombre :</label>
+                    <input class="form-control" type="text" name="<% usuario.idUsuario %>" id="nombre" >
+                    </div>
+                    
+                    <div class="mb-3" >
+                        <label class="form-label" for="usr">Nombre de usuario :</label>
+                        <input class="form-control" type="text"  id="usr" name="<% usuario.nombreUsuarios %>"> 
+                    </div>
+                  
+
+                    <label  > Permisos :</label>
+                    <input <% usuario.permisos == "Admin" ? "Selected" : '' %> type="radio" value="Admin" name="permisos"> Administrador
+                    <input <% usuario.permisos == "normal" ? "Selected" : '' %> type="radio" value="normal" name="permisos"> Normal <br><br>
+
+                    <label class="form-label" for="contra">Contraseña :</label>
+                    <input class="form-control" type="password" name="contra" id="contra">
+                    <br><br>
+                    <label for="conf-contra">Confirmar contraseña :</label> 
+                    <input class="form-control" type="password"  id="conf-contra">
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+            </form>
+        </div>
+        </div>
+        <% } %> 
+</body>
+</html>

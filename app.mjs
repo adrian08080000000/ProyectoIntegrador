@@ -18,12 +18,13 @@ app.use('/recursos', express.static(import.meta.url + 'public'));
 app.set('view engine ','ejs');
 
 
+// Importa el middleware de autenticación
+import {autSesion} from './controller/loginControlador.mjs';
 
 
 
-//variable de seciones
 import { autLogin,sesion ,Aut,logAut} from './controller/loginControlador.mjs';
-import {creSoc, buscarSoc} from './controller/mant-socios.mjs'
+import {registroEmpleados ,editEmp} from './controller/mant-empleados.mjs'
 
 app.use(sesion)
 
@@ -31,12 +32,12 @@ app.use(sesion)
 
 //manejo de rutas 
 import {rutas}from './routes/loginRutas.mjs'; 
+import { conection } from './database/db.mjs';
 app.get('/login',rutas);
-app.get('/rp', rutas);
-app.get('/logAut',logAut);
+app.get('/logAut',autSesion,logAut);
 app.get('/mantenimiento-socios',rutas)
-app.get('/socios-creacion',rutas)
-
+app.get('/socios-creacion',autSesion,rutas)
+app.get('/mantenimiento-empleados',rutas)
 
 //registro
 
@@ -44,14 +45,27 @@ app.get('/socios-creacion',rutas)
 
 app.post('/aut',autLogin)
 app.get('/',Aut) 
+app.get('/cerrar-sesion',rutas)
+//creacion empleados , eliminacion
+app.post('/crear-empleado',registroEmpleados);
+app.get('/edit/:id', (req, res) => {
+  const id = req.params.id;
+  conection.query('SELECT * FROM Usuarios WHERE id = ?', [id], (error, results) => {
+    if (error) {
+      throw error;
+    } else {
+      res.render('editarEmpleado.ejs', {
+        usuario: results[0]
+      });
+    }
+  });
+});
 
+app.post('/editar/:id',editEmp)
 //Creacion miembro
-app.post('/socios-creacion', creSoc);
-  app.post('/socios-buscar', buscarSoc)
-  
-  
+
   
 
-app.listen(8000,(request, response) => {
+app.listen(8001,(request, response) => {
     console.log("Escuchando en el puerto 8000")
 })
