@@ -26,6 +26,7 @@ import {autSesion} from './controller/loginControlador.mjs';
 import { autLogin,sesion ,Aut,logAut} from './controller/loginControlador.mjs';
 import {registroEmpleados ,editEmp} from './controller/mant-empleados.mjs'
 import { CreaAhorro } from './controller/mant-ahorroControlador.mjs';
+import {CrearDeposito} from './controller/deposito-controlador.mjs'
 
 app.use(sesion)
 
@@ -41,10 +42,14 @@ app.get('/socios-creacion',autSesion,rutas);
 app.get('/mantenimiento-empleados',rutas);
 app.get('/mantenimiento-ahorros',rutas);
 app.get('/creacion-ahorro',rutas);
+app.get('/realizar-deposito',rutas)
 
 
 //creacion de cuenta de ahorro
 app.post('/mantenimiento-ahorros',CreaAhorro)
+
+//creacion deposito
+app.post('/realizar-deposito',CrearDeposito)
 
 //registro
 
