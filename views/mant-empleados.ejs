@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-  <link rel="icon" href="../public/icon/icon.svg" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../public/icon/icon.svg" type="image/x-icon">
     <title>Mantenimiento Empleados | BENJAMIN</title>
     <link rel="stylesheet" href="../recursos/css/index.css">
     <link rel="stylesheet" href="../recursos/css/tabla.css">
@@ -11,39 +11,73 @@
 <body>
     <aside class="nav-header">
         <nav class="nav">
+            <ul class="list">
+                <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="./recursos/icon/dashboard.svg" class="list__img">
+                        <a href="/" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+        
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="./recursos/icon/docs.svg" class="list__img">
+                        <a href="#" class="nav__link">Mantenimiento</a>
+                        <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                    </div>
+                    
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+                        </li>
+        
+                        <li class="list__inside">
+                            <a href="/mantenimiento-socios" class="nav__link nav__link--inside"> Socios</a>
+                        </li>
+        
+                        <li class="list__inside">
+                          <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+                      </li>
 
-          <ul class="list">
+                    </ul>
+        
+                    </li>
+        
+                    <li class="list__item list__item--click">
+                      <div class="list__button list__button--click">
+                          <img src="./recursos/icon/stats.svg" class="list__img">
+                          <a href="#" class="nav__link">Transacciones</a>
+                          <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                      </div>
+                      <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="/realizar-deposito" class="nav__link nav__link--inside">Deposito</a>
+                        </li>
+        
+                        <li class="list__inside">
+                            <a href="/realizar-retiro" class="nav__link nav__link--inside"> Retiro</a>
+                        </li>
+                     
+                    </ul>
+                  </li>
+                    <li class="list__item">
+                      <div class="list__button">
+                          <img src="./recursos/icon/dashboard.svg" class="list__img">
+                          <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
+                      </div>
+                  </li>
+                
+        
+        </nav>
       
-              <li class="list__item">
-                  <div class="list__button">
-                      <img src="./recursos/icon/dashboard.svg" class="list__img">
-                      <a href="/" class="nav__link">Inicio</a>
-                  </div>
-              </li>
-      
-              <li class="list__item list__item--click">
-                  <div class="list__button list__button--click">
-                      <img src="./recursos/icon/docs.svg" class="list__img">
-                      <a href="#" class="nav__link">Mantenimiento</a>
-                      <img src="./recursos/icon/arrow.svg" class="list__arrow">
-                  </div>
-      
-                  <ul class="list__show">
-                      <li class="list__inside">
-                          <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
-                      </li>
-      
-                      <li class="list__inside">
-                          <a href="#" class="nav__link nav__link--inside">Socios</a>
-                      </li>
-                  </ul>
-      
-              </li>
-      </nav>
-      
-      <header class="header">
+      <header class="header bg-success">
+
+
+
         <% if (typeof username !== 'undefined') { %>
-            <p>Bienvenido, <%= username %>!</p>
+            <h1  style="font-size: 20px;" class="text-white ph">Pagina/ Mantenimiento Empleados</h1>
+            <p class="text-white ph">Bienvenido, <%= username %>!</p>
         <% } else { %>
             <p>No has iniciado sesión.</p>
         <% } %>
@@ -55,36 +89,38 @@
         <div class="card-header">
             <h1>Creacion de usuarios :</h1>
         <div class="card-body">
-            <form  action="/crear-empleado" method="post">
+            <form id="formulario-edicion" action="/crear-empleado" method="post">
+                    <input type="hidden" id="idUsuarios" name="idUsuarios">
                     <div class="mb-3">
-                        <label class="form-label" id="nombre" for="nombre">Nombre :</label>
-                    <input class="form-control" type="text" name="nombre" id="nombre" >
+                        <label class="form-label" for="nombre">Nombre :</label>
+                        <input class="form-control" type="text" name="nombre" id="nombre" required>
                     </div>
                     
                     <div class="mb-3" >
-                        <label class="form-label" for="usr">Nombre de usuario :</label>
-                        <input class="form-control" type="text"  id="usr" name="nombreUsr"> 
+                        <label class="form-label" for="login">Nombre de usuario :</label>
+                        <input class="form-control" type="text"  id="login" name="login" required> 
                     </div>
                   
 
                     <label  > Permisos :</label>
                     <input class="" type="radio" value="Admin" name="permisos"> Administrador
-                    <input type="radio" value="normal" name="permisos"> Normal <br><br>
+                    <input type="radio" value="normal" name="permisos" > Normal <br><br>
 
                     <label class="form-label" for="contra">Contraseña :</label>
-                    <input class="form-control" type="password" name="contra" id="contra">
+                    <input class="form-control" type="password" name="contra" id="contra" required>
                     <br><br>
                     <label for="conf-contra">Confirmar contraseña :</label> 
-                    <input class="form-control" type="password"  id="conf-contra">
+                    <input class="form-control" type="password"  id="conf-contra" name="confcontra" required>
                     <br><br>
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <button type="submit" id="crear" class="btn btn-success">Crear</button>
+                   
             </form>
         </div>
         </div>
         <div>
-            <table  class="table table-bordered table-striped text-center">
+            <table id="tabla-usuarios" class="table table-bordered table-striped text-center">
                 <thead>
-                <tr class="bg-primary text-white">
+                <tr class="bg-success text-white">
                   <th scope="col">ID</th>
                   <th scope="col">Nombre</th>
                   <th scope="col">Login</th>
@@ -93,20 +129,20 @@
                 </tr>
                 </thead>
                 <tbody>
-                <% usuarios.forEach(usuario => { %>
-                  <tr>
-                    <td><%= usuario.idUsuarios %></td>
-                    <td><%= usuario.nombreUsuarios %></td>
-                    <td><%= usuario.loginUsuarios %></td>
-                    <td><%= usuario.permisos  %> </td>
-                    <td>
-                        <a href="/editar/<%= usuario.idUsuarios %>" class="btn btn-outline-info">Editar</a>
-                        <a href="/eliminar" class="btn btn-outline-danger">Eliminar</a>
-                    </td>
-                    
-                  </tr>
-                <% }); %>
-                </tbody>
+                    <% usuarios.forEach(usuario => { %>
+                      <tr class="fila" data-id="<%= usuario.idUsuarios %>">
+                        <td><%= usuario.idUsuarios %></td>
+                        <td><%= usuario.nombreUsuarios %></td>
+                        <td><%= usuario.loginUsuarios %></td>
+                        <td><%= usuario.permisos %></td>
+                        <td>
+                            <button class="editar-btn-1 btn btn-info" >Editar</button>
+
+                         <button class="btn btn-danger" id="botonEliminar">Eliminar</button>
+                        </td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
               </table>
         </div>
 

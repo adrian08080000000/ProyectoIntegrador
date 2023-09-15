@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantenimineto Socios | COOPCOPE</title>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+  <!-- Nucleo Icons -->
+  <link href="../recursos/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../recursos/css/nucleo-svg.css" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../recursos/css/material-dashboard.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../recursos/css/mains.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="../recursos/css/tabla.css">
+  <link rel="stylesheet" href="../recursos/css/index.css">
+
+</head>
+
+<body>
+  <aside class="nav-header" >
+    <nav class="nav">
+      <ul class="list">
+        <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
+  
+          <li class="list__item">
+              <div class="list__button">
+                  <img src="../recursos/icon/dashboard.svg" class="list__img">
+                  <a href="/" class="nav__link">Inicio</a>
+              </div>
+          </li>
+  
+          <li class="list__item list__item--click">
+              <div class="list__button list__button--click">
+                  <img src="../recursos/icon/docs.svg" class="list__img">
+                  <a href="#" class="nav__link">Mantenimiento</a>
+                  <img src="../recursos/icon/arrow.svg" class="list__arrow">
+              </div>
+              
+              <ul class="list__show">
+                  <li class="list__inside">
+                      <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+                  </li>
+  
+                  <li class="list__inside">
+                      <a href="/mantenimiento-socios" class="nav__link nav__link--inside"> Socios</a>
+                  </li>
+  
+                  <li class="list__inside">
+                    <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+                </li>
+
+              </ul>
+  
+              </li>
+  
+              <li class="list__item list__item--click">
+                <div class="list__button list__button--click">
+                    <img src="../recursos/icon/stats.svg" class="list__img">
+                    <a href="#" class="nav__link">Transacciones</a>
+                    <img src="../recursos/icon/arrow.svg" class="list__arrow">
+                </div>
+                <ul class="list__show">
+                  <li class="list__inside">
+                    <a href="/realizar-deposito" class="nav__link nav__link--inside">Deposito</a>
+                </li>
+
+                <li class="list__inside">
+                    <a href="/realizar-retiro" class="nav__link nav__link--inside"> Retiro</a>
+                </li>
+  
+              </ul>
+            </li>
+              <li class="list__item">
+                <div class="list__button">
+                    <img src="../recursos/icon/dashboard.svg" class="list__img">
+                    <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
+                </div>
+            </li>
+          
+  
+  </nav>
+  
+  <header class="header bg-success">
+
+
+    <h1  style="font-size: 25px;" class="text-white ph">Pagina/ Mantenimiento Socios</h1>
+    <% if (typeof username !== 'undefined') { %>
+       
+        <p class="text-white ph">Bienvenido, <%= username %>!</p>
+    <% } else { %>
+        <p></p>
+    <% } %>
+  
+  </header>
+    </div>
+
+    </div>
+    <main class="principal">
+      <div class="card-header">
+        
+
+    <div>
+      <div>
+        <form class="" action="/guardar-Socio" method="post">
+
+          <div class="contenedor_input_crear_socio">
+            <img class="icono_guardar_socio" src="https://cdn-icons-png.flaticon.com/128/3200/3200748.png" alt="">
+      
+            <h1 style="display:inline;">Datos aqui</h1>
+            <p> Create nuevo socio!</p>
+            
+         
+            
+      
+            <br>
+            <input type="number" maxlength="11" required name="cedulaSocio" placeholder="Cedula: 11 caracteres">
+      
+            <input type="text" maxlength="11" required name="nombreSocio" placeholder="Nombre: 11 caracteres"><br>
+      
+            <input type="text" maxlength="24" required name="apellidosSocio" placeholder="Apellidos: 24 caracteres">
+           
+           
+            <input style="display: none;" type="text"  name="activo_inactivo" value="Activo"><br>
+      
+      
+            <span>Fecha de nacimiento</span>
+            <input type="date" required name="fechaNacimiento"><br>
+      
+            <input type="email" maxlength="40" required name="socioCorreoElectronico" placeholder="Correo: 40 caracteres">
+      
+            <input type="text" maxlength="15" name="socioTelefono" required placeholder="Telefono: 15 caracteres">
+            <br>
+            
+            <input type="text" maxlength="100" required name="socioDireccion" placeholder="Direccion socio: 100 caracteres">
+            <br>
+      
+            <label>Sexo:</label>
+            <select title="Haga click y selecione" class="clase_select_crear_socio" id="estadoCivil" name="sexo">
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+      
+            <label>Estado civil:</label>
+            <select title="Haga click y selecione" class="clase_select_crear_socio" name="estadoCivil">
+              <option value="Soltero/a">Soltero/a</option>
+              <option value="Casado/a">Casado/a</option>
+            </select>
+      
+            
+           
+      <!--input de empresa-->
+            
+      
+            <input type="text" maxlength="50" required name="puestoTrabajo" placeholder="Puesto Trabajo: 50 caracteres"> <br>
+      
+            <input type="text" maxlength="50" required name="nombreEmpresa" placeholder="Nombre empresa: 50 caracteres"> <br>
+      
+            <input type="text" maxlength="100" required name="direccionEmpresa" placeholder="Direccion empresa: 50 caracteres"> <br>
+      
+            <input type="number" maxlength="100" required name="gananciasMensual" placeholder="Ganancias mensual empresa: 50 caracteres"> <br>
+      
+            
+      
+            <div class="conten-guardar">
+              <button title="Guardar datos" type="submit">Guardar</button>
+            </div>
+      
+          </div>
+        </form>
+    </div>
+    <div class="main-class">
+      <% if (typeof socio !=='undefined' ) { %>
+        <h2>Datos del socio encontrado:</h2>
+        <p>Nombre: <%= socio.nombreSocio %>
+        </p>
+        <p>Apellido: <%= socio.apellidosSocio %>
+        </p>
+        <!-- Otros campos de datos del socio aquí -->
+  
+        <% } %>
+        </main>
+</aside>
+
+
+        <% if (typeof alert !="undefined" ) { %>
+          <script>
+            Swal.fire({
+              title: '<%= alertTitle %>',
+              text: '<%= alertMenssage %>',
+              icon: '<%= alertIcon %>',
+              showConfirmButton: '<%= showConfirmButton%>',
+              timer: '<%= timer%>'
+            }).then((result) => {
+              window.location.href = '/<%= ruta %>'
+            });
+          </script>
+          <% } %>
+  </div>
+
+
+  </div>
+
+
+
+  <script src="../recursos/javaScript/formularioSocios.js">
+   
+  </script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../recursos/javaScript/material-dashboard.min.js"></script>
+  <script src="../recursos/javaScript/barraLateral.js"></script>
+<script src="../recursos/javaScript/index.js"></script>
+<script src="../recursos/javaScript/alertas.js"></script>
+</body>
+
+</html>

@@ -45,27 +45,3 @@ listElements.forEach(listElement => {
 
     })
 });
-const
- cerrarSesionButton = document.getElementById('cerrar-sesion'); // Reemplaza con el selector de tu botón de cierre de sesión
-
-cerrarSesionButton.addEventListener('click', () => {
-  console.log("a")
-  // Realiza una solicitud a la ruta de cierre de sesión
-  fetch('/cerrar-sesion')
-    .then(() => {
-      // Muestra una alerta de SweetAlert después de cerrar sesión
-      Swal.fire({
-        alert:true,
-        icon: 'success',
-        title: 'Sesión Cerrada',
-        text: 'Tu sesión se ha cerrado exitosamente.',
-      }).then(() => {
-        // Redirige al usuario a donde desees después de cerrar sesión
-        window.location.href = '/'; // Por ejemplo, puedes redirigirlo a la página de inicio
-      });
-    })
-    .catch((error) => {
-      // Maneja errores si es necesario
-      console.error(error);
-    });
-});

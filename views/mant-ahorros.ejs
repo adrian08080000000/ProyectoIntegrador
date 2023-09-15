@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../recursos/css/index.css">
+    <link rel="stylesheet" href="../recursos/css/tabla.css">
+    <title>Mantenimiento Ahorros | BENJAMIN</title>
+</head>
+<body>
+    <aside class="nav-header">
+        <nav class="nav">
+            <ul class="list">
+    
+                <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="./recursos/icon/dashboard.svg" class="list__img">
+                        <a href="/" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+        
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="./recursos/icon/docs.svg" class="list__img">
+                        <a href="#" class="nav__link">Mantenimiento</a>
+                        <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                    </div>
+                    
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+                        </li>
+        
+                        <li class="list__inside">
+                            <a href="/mantenimiento-socios" class="nav__link nav__link--inside"> Socios</a>
+                        </li>
+        
+                        <li class="list__inside">
+                          <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+                      </li>
+
+                    </ul>
+        
+                    </li>
+        
+                    <li class="list__item list__item--click">
+                      <div class="list__button list__button--click">
+                          <img src="./recursos/icon/stats.svg" class="list__img">
+                          <a href="#" class="nav__link">Transacciones</a>
+                          <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                      </div>
+                      <ul class="list__show">
+        
+                        <li class="list__inside">
+                            <a href="/realizar-deposito" class="nav__link nav__link--inside">Deposito</a>
+                        </li>
+        
+                        <li class="list__inside">
+                            <a href="/realizar-retiro" class="nav__link nav__link--inside"> Retiro</a>
+                        </li>
+                     
+                    </ul>
+                  </li>
+                    <li class="list__item">
+                      <div class="list__button">
+                          <img src="./recursos/icon/dashboard.svg" class="list__img">
+                          <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
+                      </div>
+                  </li>
+                
+        
+        </nav>
+
+      
+      <header class="header">
+        <% if (typeof username !== 'undefined') { %>
+            <p>Bienvenido, <%= username %>!</p>
+        <% } else { %>
+            <p>No has iniciado sesión.</p>
+        <% } %>
+      
+      </header>
+      
+      <main class="principal">
+
+        <div class="card-header">
+            
+            <h1>Mantenimiento de Cuenta de Ahorro:</h1>
+            <div class="div1-ahorro"> 
+                <p>Creacion de Cuenta de Ahorro</p>
+                <a href="/creacion-Ahorro"><button>crear</button></a>
+            </div>
+        <div>
+            <table  class="table table-bordered table-striped text-center">
+                <thead>
+                <tr class="bg-primary text-white">
+                  <th scope="col">ID</th>
+                  <th scope="col">Cuenta Socio</th>
+                  <th scope="col">Saldo</th>
+                  <th scope="col">Fecha Creacion</th>
+                  <th scope="col">Estado</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% usuarios.forEach(cuentaahorros => { %>
+                        <tr>
+                          <td><%= cuentaahorros.idCuentaAhorros %></td>
+                          <td><%= cuentaahorros.cuentaSocio %></td>
+                          <td><%= cuentaahorros.saldo %></td>
+                          <td><%= cuentaahorros.fechaCreacion  %> </td>
+                          <td><%= cuentaahorros.estado %> </td>                         
+                        </tr>
+                      <% }); %>
+
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+   
+
+      </main>
+      </aside>
+
+      <script src="./recursos/javaScript/barraLateral.js"></script>
+      <script src="./recursos/javaScript/tabla.js"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <% if (typeof alert != "undefined") { %>
+      <script>
+          Swal.fire({
+              title: '<%= alertTitle %>',
+              text: '<%= alertMenssage %>',
+              icon: '<%= alertIcon %>',
+              showConfirmButton: '<%= showConfirmButton%>',
+              timer: '<%= timer%>'
+          }).then((result) => {
+            window.location.href = '/<%= ruta %>'
+          });
+      </script>
+      <% } %>
+</body>
+</html>

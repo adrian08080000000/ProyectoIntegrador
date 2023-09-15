@@ -1,0 +1,477 @@
+/* De aqui para abajo esta el estilo de la tabla para mostrar los registros socios*/
+.contenedor_tabla_crear_socio {
+    margin-top: 10px;
+    /* width: 40%; */
+    margin-right: 10px;
+    position: relative;
+    /* margin-left: 340px;
+    margin-top: 108px; */
+    /* height: 300px; */
+}
+
+.contedor_tabla_escrol {
+    margin-top: 55px;
+    /* margin-left: 60px;*/
+    /*position: absolute;*/
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 5px rgb(167, 167, 167);
+    overflow: auto;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+thead {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+}
+
+tbody {
+    width: 60px;
+    /* Ancho máximo del contenedor donde se mostrará el texto */
+    border: 1px solid #ccc;
+    /* Solo para visualizar el contenedor */
+}
+
+.imagen {
+    width: 250px;
+    height: 160px;
+
+}
+
+/*Estilo boton ir a crear socio*/
+.contenedor_boton_ir_a_crear_socio {
+    border-bottom: 1px solid gray;
+    padding-bottom: 15px;
+
+}
+
+.contenedor_flex {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor_boton_ir_a_crear_socio p {
+    color: gray;
+    display: block;
+}
+
+.contenedor_boton_ir_a_crear_socio img {
+    width: 35px;
+    align-items: center;
+
+}
+
+.contenedor_boton_ir_a_crear_socio a {
+    padding: 6.5px 20px;
+    background-color: #45a07a;
+    border: 1px solid #45a049;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.contenedor_boton_ir_a_crear_socio a:hover {
+    background-color: #64b668;
+}
+
+.contenedor_boton_ir_a_crear_socio a:active {
+    background-color: #3e8e41;
+}
+
+/*Estilo boton ir a crear socio*/
+
+
+
+/*Estilo buscar por cedula*/
+.form_buscar_por_cedula {
+    height: 50px;
+
+    /*position: absolute;*/
+
+}
+
+.form_buscar_por_cedula input {
+    height: 25px;
+    border-radius: 5px;
+    border: 1px solid #9baaa4;
+
+}
+
+.form_buscar_por_cedula a {
+    padding: 6.5px 20px;
+    background-color: #45a07a;
+    border: 1px solid #45a049;
+    text-decoration: none;
+    color: white;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+    font-size: 14px;
+}
+
+.form_buscar_por_cedula a:hover {
+    background-color: #64b668;
+}
+
+.form_buscar_por_cedula a:active {
+    background-color: #3e8e41;
+}
+
+.form_buscar_por_cedula button {
+    padding: 8px 20px;
+    cursor: pointer;
+    background-color: #45a07a;
+    border: #45a049;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+.form_buscar_por_cedula button:hover {
+    background-color: #51a055;
+}
+
+.form_buscar_por_cedula button:active {
+    background-color: #3e8e41;
+}
+
+.form_buscar_por_cedula p {
+    color: gray;
+
+}
+
+/*Estilo buscar por cedula*/
+
+table,
+td {
+    border: 1px solid gray;
+}
+
+th {
+    color: white;
+    padding: 10px 15px;
+    font-size: 13px;
+    background-color: rgb(16, 158, 16);
+    width: 20%;
+    
+}
+
+td {
+    font-size: 13px;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #ccc;
+    position: relative;
+   padding-left: 6px;
+  
+    
+}
+
+tr:nth-child(odd) {
+    background-color: rgb(255, 255, 255);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(231, 231, 231, 0.671);
+}
+
+.aviso_no_hay_datos {
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    color: #525252;
+    background-color: #f3f3f3;
+}
+
+/* De aqui para arriba esta el estilo de la tabla para mostrar los registros sosios*/
+
+
+
+
+
+/*De aqui para abajo esta el estilo del formulario crear socio*/
+.form_crear_socio {
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+    height: 495px;
+    margin-top: 50px;
+    margin-left: 380px;
+
+}
+
+.clase_select_crear_socio {
+    padding: 5px 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.clase_select_crear_socio option {
+    color: rgb(84, 151, 78);
+}
+.contenedor_input_crear_socio {
+   /* margin-top: 50px; */
+}
+.contenedor_input_crear_socio input {
+    margin-top: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgba(151, 151, 151, 0.541);
+    width: 100%;
+    height: 30px;
+    font-size: 18px;
+}
+
+.contenedor_input_crear_socio input:hover {
+    background-color: rgba(230, 230, 230, 0.541);
+
+}
+
+.icono_guardar_socio {
+    width: 40px;
+    display: inline;
+    margin: 5px;
+}
+
+.conten-guardar {
+    align-items: center;
+}
+
+.conten-guardar button {
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: rgb(18, 145, 18);
+    color: white;
+    border: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.conten-guardar button:hover {
+    background-color: rgb(33, 165, 62);
+}
+
+.conten-guardar button:active {
+    background-color: rgb(97, 189, 117);
+}
+
+.contenedor_input_crear_socio p {
+    color: gray;
+}
+
+/*De aqui para arriba esta el estilo del formulario crear socio*/
+
+
+
+/*De aqui para abjo estan los estilos de la ventana emergente principal de cada registro de la tabla mant-socios*/
+.ventana {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    
+
+}
+.contenido {
+    background-color: white;
+    width: 40%;
+    height: 60%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin-top: 14%;
+    text-align: center;
+    
+
+}
+
+.contenedor_a_centrar {
+    padding-top: 30px;
+    width: 40%;
+    margin: auto;
+}
+
+.contenido .contenedor_a_centrar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    display: block;
+    margin-top: 10px;
+    font-size: 18px;
+    background-color: #74be5b;
+    transition: all 10ms ease;
+    border-radius: 5px;
+}
+
+.contenido .contenedor_a_centrar a:hover {
+    background-color: #5eb143;
+}
+
+.h2_padding_top {
+    padding-top: 5px;
+}
+
+.opcion_icono_cuenta_redular {
+    width: 45px;
+    cursor: pointer;
+    padding: 10px;
+    transition: all 0.5s ease;
+}
+
+.opcion_icono_cuenta_redular:hover {
+    background-color: rgb(224, 224, 224);
+    border-radius: 50%;
+
+}
+
+/*de aqui para arriba estan los estilo de la ventana emergente principal de cada registro de la tabla mant-socios */
+
+
+
+
+
+/*De aqui para abajo esta el estilo del formulario actualizar socio*/
+.form_crear_socio_actualizar {
+    border-radius: 15px;
+    background-color: rgb(255, 255, 255);
+    width: 40%;
+    display: flex;
+    position: absolute;
+    left: 35%;
+    margin-top: 80px;
+    border: 1px solid rgb(214, 214, 214);
+}
+
+.contenedor_input_actualizar_socio {
+    width: 90%;
+    margin: auto;
+}
+
+.contenedor_input_actualizar_socio input {
+    margin-top: 10px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid rgba(151, 151, 151, 0.541);
+    width: 60%;
+    height: 30px;
+    font-size: 18px;
+}
+
+.conten-actualizar_buttom button {
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    background-color: rgb(18, 145, 18);
+    color: white;
+    border: none;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.conten-actualizar_buttom button:hover {
+    background-color: rgb(33, 165, 62);
+}
+
+.conten-actualizar_buttom button:active {
+    background-color: rgb(97, 189, 117);
+}
+
+/*De aqui para arriba esta el estilo del formulario actualizar socio*/
+
+
+
+/*De aqui para abjo esta el estilo de informacion completa del socio, html mostrar informacion socio*/
+.contenedor_informacion_completa_socio {
+    margin-left: 35%;
+    margin-top: 80px;
+    width: 40%;
+    border-radius: 15px;
+    border: 1px solid rgb(219, 219, 219);
+}
+
+.div_cabecera_informacion_socio {
+    background-color: rgb(255, 255, 255);
+    margin-top: 10px;
+    align-items: center;
+
+}
+
+.imagenUsuario_informacion_socio {
+    width: 45px;
+    margin: 5px;
+
+}
+
+.p_ {
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 14px;
+    background-color: rgb(230, 240, 230);
+    margin-top: 5px;
+}
+
+.span_datos {
+    color: #585858;
+    margin: 10px;
+}
+
+/*De aqui para arriba esta el estilo de informacion completa del socio, html mostrar informacion socio*/
+
+
+
+
+
+/*De aqui para abajo esta el Css del archivo html error (La sedula ya existe)*/
+.contenedor_error {
+    background-color: #f3f3f3;
+    text-align: center;
+    margin-top: 200px;
+    width: 40%;
+    height: 150px;
+    margin-right: 10px;
+    margin-left: 480px;
+    box-shadow: 0px 0px 10px rgb(114, 114, 114);
+}
+
+
+.contenedor_error p {
+    margin-bottom: 20px;
+    color: #525252;
+}
+
+.contenedor_error a {
+    text-decoration: none;
+    background-color: #5aa740;
+    padding: 10px 15px;
+    color: white;
+    transition: all 0.5s ease;
+}
+
+.contenedor_error a:hover {
+    background-color: #23630e;
+    /*border: 1px solid #5eb143;
+    background-color: #bde6b0;*/
+
+}
+/*De aqui para arriba esta el Css del archivo html error (La sedula ya existe)*/

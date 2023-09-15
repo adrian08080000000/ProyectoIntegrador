@@ -1,0 +1,125 @@
+
+
+
+
+
+
+
+
+
+            
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantenimineto Socios | COOPCOPE</title>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+  <!-- Nucleo Icons -->
+  <link href="../recursos/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../recursos/css/nucleo-svg.css" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../recursos/css/material-dashboard.css" rel="stylesheet"/>
+
+  <link rel="stylesheet" href="../recursos/css/mains.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="../recursos/css/tabla.css">
+
+</head>
+
+<body>
+
+
+<main class="main_flexbox_del_contenido_de_la_app">
+
+        <div class="contenedor_informacion_completa_socio">
+        <div class="div_cabecera_informacion_socio">
+          <img class="imagenUsuario_informacion_socio" src="http://localhost:3000/imagenes/usuario.png" alt="">
+        
+          <h1 style=" display:inline;">Información del socio, <%= data.socioNombre %>!</h1>
+           <p >Datos privados</p> 
+        </div>                              
+        <br>  
+       
+        <p class="p_">Identificador del Socio</p>
+        <span class="span_datos" style="color: rgb(177, 52, 52);"><%= data.idSocio %></span> <br>
+        
+        <p class="p_">Actividad</p>
+        <span class="span_datos" ><%= data. activo_inactivo %></span> <br>
+        
+
+          <p class="p_">Cedula:</p>
+          <span class="span_datos"><%= data.cedulaSocio %></span> <br>
+        
+          <p class="p_">Nombre:</p>
+          <span class="span_datos"><%= data.nombreSocio %></span><br>
+        
+          <p class="p_">Apellidos:</p>
+          <span class="span_datos"> <%= data.apellidosSocio %></span><br>
+        
+          <p class="p_">Fecha Nacimiento:</p>
+          <span class="span_datos"><%= data.fechaNacimiento %></span><br>
+        
+          <p class="p_">Telefono:</p>
+          <span class="span_datos"><%= data.socioTelefono %></span><br>
+        
+          <p class="p_">Direccion:</p>
+          <span class="span_datos"><%= data.socioDireccion %></span><br>
+        
+          <p class="p_">Correo Electronico:</p>
+          <span class="span_datos"><%= data.socioCorreoElectronico %></span><br>
+        
+          <p class="p_">Sexo:</p>
+          <span class="span_datos"><%= data.sexo %></span><br>
+        
+          <p class="p_">Estado Civil:</p>
+          <span class="span_datos"><%= data.estadoCivil %></span><br>
+           
+          <p class="p_">Fecha Registro:</p>
+          <span class="span_datos"><%= data.socioFechaRegistro %></span><br>
+
+
+          <p class="p_">Puesto Trabajo:</p>
+          <span class="span_datos"><%= data.puestoTrabajo %></span><br>
+
+
+          <p class="p_">Nombre empresa:</p>
+          <span class="span_datos"><%= data.nombreEmpresa %></span><br>
+
+          <p class="p_">direccion empresa:</p>
+          <span class="span_datos"><%= data.direccionEmpresa %></span><br>
+
+          <p class="p_">Ganancias Mensual:</p>
+          <span class="span_datos"><%= data.gananciasMensual %></span><br>
+           
+          <p class="p_">Fecha registro:</p>
+        <span class="span_datos"><%= data.socioFechaRegistro %></span><br>
+
+        </div>
+        
+        
+    
+
+        
+        
+<main class="main_crear_socio">
+
+
+  <script src="../recursos/javaScript/formularioSocios.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../recursos/javaScript/material-dashboard.min.js"></script>
+</body>
+
+</html>

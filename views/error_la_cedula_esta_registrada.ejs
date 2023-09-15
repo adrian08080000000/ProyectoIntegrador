@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mantenimineto Socios | COOPCOPE</title>
+
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+
+  <!-- Nucleo Icons -->
+  <link href="../recursos/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../recursos/css/nucleo-svg.css" rel="stylesheet" />
+
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link id="pagestyle" href="../recursos/css/material-dashboard.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../recursos/css/mains.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <link rel="stylesheet" href="../recursos/css/tabla.css">
+
+</head>
+
+<body>
+
+
+        <!--Este es el (main) contenedor del contenido de la aplicacion para hacer 
+  un display:flex; (flexbox)-->
+  <main class="main_flexbox_del_contenido_de_la_app">
+
+
+    <div class="contenedor_error">
+
+        <h1 style="color:red;">Error la cedula ya existe!</h1>
+
+        <p>Este error se debe a que esta intentando crear un nuevo socio con una cedula
+            de uno que ya esta registrado en la (cooperativa)!</p>
+
+        <a href="/crear-nuevo-Socio">Volver a intentarlo</a>
+
+    </div>
+
+</main>
+
+
+
+
+
+
+  <div class="main-class">
+    <% if (typeof socio !=='undefined' ) { %>
+      <h2>Datos del socio encontrado:</h2>
+      <p>Nombre: <%= socio.nombreSocio %>
+      </p>
+      <p>Apellido: <%= socio.apellidosSocio %>
+      </p>
+      <!-- Otros campos de datos del socio aquí -->
+
+      <% } %>
+
+
+        <% if (typeof alert !="undefined" ) { %>
+          <script>
+            Swal.fire({
+              title: '<%= alertTitle %>',
+              text: '<%= alertMenssage %>',
+              icon: '<%= alertIcon %>',
+              showConfirmButton: '<%= showConfirmButton%>',
+              timer: '<%= timer%>'
+            }).then((result) => {
+              window.location.href = '/<%= ruta %>'
+            });
+          </script>
+          <% } %>
+  </div>
+
+
+  </div>
+
+
+
+  <script src="../recursos/javaScript/formularioSocios.js">
+   
+  </script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../recursos/javaScript/material-dashboard.min.js"></script>
+</body>
+
+</html>

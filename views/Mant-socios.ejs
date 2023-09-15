@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="../public/icon/icon.svg" type="image/x-icon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mantenimineto Socios | BENJAMIN</title>
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../recursos/css/index.css">
+    <link rel="stylesheet" href="../recursos/css/tabla.css">
+  <title>Mantenimineto Socios | COOPCOPE</title>
 
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css"
@@ -18,145 +19,287 @@
 
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
-
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <!-- CSS Files -->
-
-
-
   <link id="pagestyle" href="../recursos/css/material-dashboard.css" rel="stylesheet" />
 
   <link rel="stylesheet" href="../recursos/css/mains.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+  <link rel="stylesheet" href="../recursos/css/tabla.css">
+
 </head>
 
-<body class="g-sidenav-show  bg-gray-100">
-
-  <%- include('./partials/nav.ejs') %>
-    <div class="header">
-      <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
-data-scroll="true">
-<div class="container-fluid py-1 px-3">
-  <nav aria-label="breadcrumb">
-
-    <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-      <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pagina</a></li>
-      <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Mantenimineto socios</li>
-    </ol>
-    <h6 class="font-weight-bolder mb-0">Mantenimineto socios</h6>
-
-  </nav>
-
-  <ul class="navbar-nav  justify-content-end">
-    </li>
-    <li class="nav-item d-flex align-items-center">
-      <a href="./pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
-        <i class="fa fa-user me-sm-1"></i>
-        <% if (login) { %>
-          <span class="d-sm-inline d-none"><%= name %></span>
-        <% } else { %>
-          <span class="d-sm-inline d-none"></span>
-        <% } %>
-      </a>
-    </li>
-  </ul>
-</div>
-</div>
-</nav>
-    </div>
-
-
-    <main class="main-class">
-      <div class="d-flex flex-column h-100">
-        <h2 class="font-weight-bolder mb-0">Mantenimineto de socios</h2>
-
-
-        <div class="form-1">
-          <div  class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl  ">
-                    <i class="material-icons opacity-10">person_add</i>
+<body>
+    <aside class="nav-header" >
+        <nav class="nav">
+          <ul class="list">
+            <img src="../recursos/icon/logo.svg" alt="Logo" class="logo">
+      
+              <li class="list__item">
+                  <div class="list__button">
+                      <img src="../recursos/icon/dashboard.svg" class="list__img">
+                      <a href="/" class="nav__link">Inicio</a>
                   </div>
-          <p class="mant">Creacion de nuevos usuarios</p>
-          <a href="/socios-creacion"><button id="mostrar-formulario" type="submit" class="btn bg-gradient-primary " > Crear</button></a>
+              </li>
+      
+              <li class="list__item list__item--click">
+                  <div class="list__button list__button--click">
+                      <img src="../recursos/icon/docs.svg" class="list__img">
+                      <a href="#" class="nav__link">Mantenimiento</a>
+                      <img src="../recursos/icon/arrow.svg" class="list__arrow">
+                  </div>
+                  
+                  <ul class="list__show">
+                      <li class="list__inside">
+                          <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+                      </li>
+      
+                      <li class="list__inside">
+                          <a href="/mantenimiento-socios" class="nav__link nav__link--inside"> Socios</a>
+                      </li>
+      
+                      <li class="list__inside">
+                        <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+                    </li>
+
+                  </ul>
+      
+                  </li>
+      
+                  <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="../recursos/icon/stats.svg" class="list__img">
+                        <a href="#" class="nav__link">Transacciones</a>
+                        <img src="../recursos/icon/arrow.svg" class="list__arrow">
+                    </div>
+                    <ul class="list__show">
+                      <li class="list__inside">
+                        <a href="/realizar-deposito" class="nav__link nav__link--inside">Deposito</a>
+                    </li>
+    
+                    <li class="list__inside">
+                        <a href="/realizar-retiro" class="nav__link nav__link--inside"> Retiro</a>
+                    </li>
+      
+                  </ul>
+                </li>
+                  <li class="list__item">
+                    <div class="list__button">
+                        <img src="../recursos/icon/dashboard.svg" class="list__img">
+                        <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
+                    </div>
+                </li>
+              
+      
+      </nav>
+      
+      <header class="header bg-success">
+
+
+        <h1  style="font-size: 25px;" class="text-white ph">Pagina/ Mantenimiento Socios</h1>
+        <% if (typeof username !== 'undefined') { %>
+           
+            <p class="text-white ph">Bienvenido, <%= username %>!</p>
+        <% } else { %>
+            <p></p>
+        <% } %>
+      
+      </header>
         </div>
 
-      </div>
-      
-      
-    </main>
-
-    <br><br><br>
-
-    <div class="main-class2">
-      <div class="d-flex flex-column h-100">
-        <h2 class="font-weight-bolder mb-0">Buscar Socios</h2>
-
-
-        <div class="form-2">
-          <div class="card-body">
-            <form  class="text-start" action="/socios-buscar" method="post">
-              <div class="input-group input-group-outline my-3">
-                
-                <label class="form-label">Cedula</label>
-                <input type="text" class="form-control" name="cedula">
+        </div>
+        <main class="principal">
+          <div class="card-header">
+            <div class="contenedor_tabla_crear_socio">
+              <div class="contenedor_boton_ir_a_crear_socio">
+                <p>Creación de nuevo socio</p>
+                <div class="contenedor_flex">
+                  <img src="https://cdn-icons-png.flaticon.com/128/64/64572.png" alt="">
+                  <a title="Refrescar tabla" href="/crear-nuevo-Socio">Crear socios</a>
+                </div>
               </div>
-              <div class="text-center">
-                <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2"> Buscar</button>
+          
+              <form method="post" action="/buscar_por_cedula" class="form_buscar_por_cedula">
+                <p>Buscar socio por cedula!</p>
+                <input maxlength="11" title="Buscar por cedula" name="cedula_buscar" type="text" required placeholder="Buscar">
+                <button type="submit" title="Buscar">Buscar</button>
+                <a title="Refrescar tabla" href="/mantenimiento-socios">Refrescar</a>
+          
+                <a title="Socios inactivos" href="/mostrar_socios_inactivos">Socios inactivos</a>
+              </form>
+          
+              <div class="contedor_tabla_escrol">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Cedula</th>
+                      <th>Nombre</th>
+                      <th>Apellidos</th>
+                      <th>Actividad</th>
+                      <th>Accion</th>
+                    </tr>
+                  </thead>
+          
+                  <tbody>
+          
+                    <% if(typeof data !=='undefined' && data.length> 0 ) { %>
+          
+                      <%for (var i=0; i < data.length; i++){%>
+          
+          
+                        <tr>
+                          <td>
+                            <%= (i + 1) %>
+                          </td>
+                          <td>
+                            <%= data[i].cedulaSocio %>
+                          </td>
+                          <td class="nombre">
+                            <%= data[i].nombreSocio %>
+                          </td>
+                          <td>
+                            <%= data[i].apellidosSocio %>
+                          </td>
+                          <td>
+                            <%= data[i].activo_inactivo %>
+                          </td>
+                          <td>
+                            <!-- Codigo ventana principal, opciones sobre cada socio-->
+                            <div class="opcion-icon-container">
+                             
+                              <img class="mostrarVentana opcion_icono_cuenta_redular" title="Opciones Socio"
+                                src="https://cdn-icons-png.flaticon.com/128/2893/2893795.png" alt="">
+                            </div>
+          
+                           
+                              
+          
+                            <div class="ventana ventanaEmergente">
+                              <div class="contenido">
+                                <img class="icono_guardar_socio" src="http://localhost:3000/imagenes/documento.png" alt="">
+          
+                                <h2 class="h2_padding_top">Opciones</h2>
+                                <p>Contenido de la ventana emergente.</p>
+                                <hr>
+                                <div class="contenedor_a_centrar">
+          
+                                  <a class="style_edit" href="/editar-datos-socio/<%= data[i].idSocio %>">Editar</a>
+                                  <a class="style_edit" href="/ver_info_completa_socio/<%= data[i].idSocio %>">Información completa</a>
+          
+                                   <a class="style_edit" href="/socio_inactivo/<%= data[i].idSocio %>">Desavilitar socio</a>
+          
+          
+                                 
+                                  <!-- Codigo de ventana, seguro que quiere eliminar el socio-->
+          
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <!-- Codigo ventana principal, opciones sobre cada socio-->
+          
               </div>
-            </form>
-          </div>
+              </tr>
+              
+          
+          
+              <%}%>
+                <%} else { %>
+                  <tr class="quitar_border_tr_aviso">
+                    <td class="aviso_no_hay_datos" colspan="6"> <img src="http://localhost:3000/imagenes/cara-triste.png" alt="">
+                      Ups! lo sentimos, No hay datos para mostrar</td>
+                  </tr>
+                  <% } %>
+          
+          
+          
+                    </tbody>
+                    </table>
         </div>
 
-      </div>
-      
-      
-    </div>
-    
-    
-    
-      
-      
-      
-      
-    <div class="main-class">
-      <% if (typeof socio !== 'undefined') { %>
-        <h2>Datos del socio encontrado:</h2>
-        <p>Nombre: <%= socio.nombreSocio %></p>
-        <p>Apellido: <%= socio.apellidosSocio %></p>
-        <!-- Otros campos de datos del socio aquí -->
-     
+   
+           
+            </main>
+</aside>
+
+  
+  </div>
+  </div>
+
+
+  <div class="main-class">
+    <% if (typeof socio !=='undefined' ) { %>
+      <h2>Datos del socio encontrado:</h2>
+      <p>Nombre: <%= socio.nombreSocio %>
+      </p>
+      <p>Apellido: <%= socio.apellidosSocio %>
+      </p>
+      <!-- Otros campos de datos del socio aquí -->
+
       <% } %>
 
 
-<% if (typeof alert != "undefined") { %>
+        <% if (typeof alert !="undefined" ) { %>
+          <script>
+            Swal.fire({
+              title: '<%= alertTitle %>',
+              text: '<%= alertMenssage %>',
+              icon: '<%= alertIcon %>',
+              showConfirmButton: '<%= showConfirmButton%>',
+              timer: '<%= timer%>'
+            }).then((result) => {
+              window.location.href = '/<%= ruta %>'
+            });
+          </script>
+          <% } %>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+
   <script>
-      Swal.fire({
-          title: '<%= alertTitle %>',
-          text: '<%= alertMenssage %>',
-          icon: '<%= alertIcon %>',
-          showConfirmButton: '<%= showConfirmButton%>',
-          timer: '<%= timer%>'
-      }).then((result) => {
-        window.location.href = '/<%= ruta %>'
-      });
+
+    
+    // Obtener todos los elementos con la clase "mostrarVentana"
+const mostrarVentanaBtns = document.querySelectorAll('.mostrarVentana');
+const ventanasEmergentes = document.querySelectorAll('.ventanaEmergente');
+// Agregar un evento clic a cada botón
+
+mostrarVentanaBtns.forEach((boton, index) => {
+    boton.addEventListener('click', () => {
+        ventanasEmergentes[index].style.display = 'block';
+    });
+});
+// Cerrar la ventana emergente al hacer clic fuera de ella
+ventanasEmergentes.forEach((ventanaEmergente) => {
+    ventanaEmergente.addEventListener('click', (event) => {
+        if (event.target === ventanaEmergente) {
+            ventanaEmergente.style.display = 'none';
+        }
+    });
+});
+
   </script>
-  <% } %>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    </div>
-   
 
+<script src="../recursos/javaScript/barraLateral.js"></script>
+<script src="../recursos/javaScript/index.js"></script>
+<script src="../recursos/javaScript/alertas.js"></script>
 
-    <script src="../recursos/javaScript/formularioSocios.js"></script>
-    <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../recursos/javaScript/material-dashboard.min.js"></script>
+  <script src="../recursos/javaScript/formularioSocios.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="../recursos/javaScript/material-dashboard.min.js"></script>
 </body>
 
 </html>
