@@ -2,208 +2,252 @@ import bcryptjs from 'bcryptjs';
 import { conection } from '../database/db.mjs';
 
 
+
 export const rutaMantEmpleados = {};
 
 rutaMantEmpleados.mantEmpl = (req, res) => {
+  
   if (req.session.loggedin) {
+    const login = req.session.loggedin;
     const username = req.session.name ? req.session.name.loginUsuarios : '';
-    conection.query('SELECT permisos FROM usuarios WHERE loginUsuarios= ?', [username], (error, results) => {
+    conection.query('SELECT * FROM Usuarios', (error, results) => {
       if (error) {
-        console.error('Error al obtener el permiso del usuario:', error);
+        console.error('Error al obtener datos de Usuarios:', error);
+        res.status(500).send('Error interno del servidor');
       } else {
-        // Supongamos que el permiso se encuentra en results[0].permisos
-        const permisoUsuario = results[0].permisos;
 
-        conection.query('SELECT * FROM Usuarios', (error, results) => {
-          if (error) {
-            console.error('Error al obtener datos de Usuarios:', error);
-            res.status(500).send('Error interno del servidor');
-          } else {
-            res.render('mant-empleados.ejs', { 
-              usuarios: results,
-              username,
-              permisoUsuario: permisoUsuario
-            });
-          }
+        res.render('mant-empleados.ejs', {
+          usuarios: results,
+          username: username,
+          login: login
+        });
+      }
+    });
+
+  } else {
+    res.redirect('/login');
+
+  }
+};
+
+rutaMantEmpleados.editarEmp=(req,res) =>{
+
+  if (req.session.loggedin) {    // Obtén el ID del usuario de los parámetros de la URL
+    const idUsuario = req.params.id;
+    const login = req.session.loggedin;
+    const username = req.session.name ? req.session.name.loginUsuarios : '';
+
+
+    res.render('editarEmpleado.ejs', {
+      username: username,
+      login: login,
+      idUsuario: idUsuario
+ 
+    });
+  } else {
+   
+    res.redirect('/login'); // Redirige a la página de inicio de sesión u otra página adecuada
+  }
+}
+
+export const registroEmpleados = async (req, res) => {
+  const nombre = req.body.nombre;
+  const user = req.body.login;
+  const permisos = req.body.permisos;
+  const contraseña = req.body.contra;
+  const confContraseña = req.body.confcontra; // Nombre del campo en el formulario
+
+  const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
+  if (!nombre || !user || !permisos || !contraseña || !confContraseña) {
+    const username = req.session.name ? req.session.name.loginUsuarios : '';
+    const login = req.session.loggedin;
+    conection.query('SELECT * FROM Usuarios', (error, results) => {
+      if (error) {
+        console.error('Error al obtener datos de Usuarios:', error);
+        res.status(500).send('Error interno del servidor');
+      } else {
+        let errorMessage = 'Se ha dejado un campo vacío.';
+        res.render('mant-empleados.ejs', {
+          usuarios: results,
+          username: username,
+          login: login,
+          alert: true,
+          alertTitle: 'Error',
+          alertMenssage: errorMessage,
+          alertIcon: "error",
+          showConfirmButton: true,
+          timer: null,
+          ruta: 'mantenimiento-empleados'
+        });
+      }
+    });
+  } else if (!regex.test(contraseña)) {
+    const username = req.session.name ? req.session.name.loginUsuarios : '';
+    const login = req.session.loggedin;
+    conection.query('SELECT * FROM Usuarios', (error, results) => {
+      if (error) {
+        console.error('Error al obtener datos de Usuarios:', error);
+        res.status(500).send('Error interno del servidor');
+      } else {
+        res.render('mant-empleados.ejs', {
+          usuarios: results,
+          username: username,
+          login: login,
+          alert: true,
+          alertTitle: 'Error',
+          alertMenssage: 'La contraseña debe tener al menos 8 caracteres, una mayúscula, un carácter especial y un número.',
+          alertIcon: "error",
+          showConfirmButton: true,
+          timer: null,
+          ruta: 'mantenimiento-empleados'
+        });
+      }
+    });
+  } else if (contraseña !== confContraseña) {
+    console.log(contraseña, confContraseña);
+    const username = req.session.name ? req.session.name.loginUsuarios : '';
+    const login = req.session.loggedin;
+    conection.query('SELECT * FROM Usuarios', (error, results) => {
+      if (error) {
+        console.error('Error al obtener datos de Usuarios:', error);
+        res.status(500).send('Error interno del servidor');
+      } else {
+        res.render('mant-empleados.ejs', {
+          usuarios: results,
+          username: username,
+          login: login,
+          alert: true,
+          alertTitle: 'Error',
+          alertMenssage: 'Errores, contraseñas no coinciden.',
+          alertIcon: "error",
+          showConfirmButton: true,
+          timer: null,
+          ruta: 'mantenimiento-empleados'
         });
       }
     });
   } else {
-    res.redirect('/login');
-  }
-};
-
-
-export const registroEmpleados = async (req, res) => {
-  const nombre = req.body.nombre;
-  const user = req.body.nombreUsr;
-  const permisos = req.body.permisos;
-  const contraseña = req.body.contra;
-  const confContraseña = req.body['conf-contra']; // Nombre del campo en el formulario
-  const login = req.session.loggedin;
-
-  // Validar que la contraseña cumple con los requisitos
-  const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  if (!regex.test(contraseña)) {
-    if (req.session.loggedin) {
-      const username = req.session.name ? req.session.name.loginUsuarios : '';
-      conection.query('SELECT permisos FROM usuarios WHERE loginUsuarios= ?', [username], (error, results) => {
-        if (error) {
-          console.error('Error al obtener el permiso del usuario:', error);
-        } else {
-          // Supongamos que el permiso se encuentra en results[0].permisos
-          const permisoUsuario = results[0].permisos;
-
-          // Consulta la base de datos para obtener los usuarios
-          conection.query('SELECT * FROM Usuarios', (error, results) => {
-            if (error) {
-              console.error('Error al obtener datos de Usuarios:', error);
-              res.status(500).send('Error interno del servidor');
-            } else {
-              // Renderiza la plantilla con los datos de usuarios
-              res.render('mant-empleados.ejs', {
-                usuarios: results, // Pasa los usuarios a la plantilla
-                username: username,
-                login: login,
-                alert: true,
-                alertTitle: 'Error',
-                alertMenssage: 'La contraseña debe tener al menos 8 caracteres, una mayúscula, un carácter especial y un número.',
-                alertIcon: "error",
-                showConfirmButton: true,
-                timer: null,
-                ruta: 'mantenimiento-empleados',
-                permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
-                // ... Otras variables necesarias
-              });
-            }
-          });
-        }
-      });
-    } else {
-      res.redirect('/login');
-    }
-  } else {
-    // Verificar si las contraseñas son iguales
-    if (contraseña !== confContraseña) {
-      if (req.session.loggedin) {
-        const username = req.session.name ? req.session.name.loginUsuarios : '';
-        conection.query('SELECT permisos FROM usuarios WHERE loginUsuarios= ?', [username], (error, results) => {
+        conection.query('SELECT * FROM Usuarios WHERE loginUsuarios = ?', [user], (error, existingUser) => {
           if (error) {
-            console.error('Error al obtener el permiso del usuario:', error);
-          } else {
-            // Supongamos que el permiso se encuentra en results[0].permisos
-            const permisoUsuario = results[0].permisos;
-
-            // Consulta la base de datos para obtener los usuarios
-            conection.query('SELECT * FROM Usuarios', (error, results) => {
+            console.error('Error al verificar si el usuario existe:', error);
+            res.status(500).send('Error interno del servidor');
+          } else if (existingUser.length > 0) {
+            // El usuario ya existe en la base de datos
+            const username = req.session.name ? req.session.name.loginUsuarios : '';
+            const login = req.session.loggedin;
+            const errorMessage = 'El nombre de usuario ya está en uso. Por favor, elige otro.';
+            conection.query('SELECT * FROM Usuarios', (error, usuarios) => {
               if (error) {
                 console.error('Error al obtener datos de Usuarios:', error);
                 res.status(500).send('Error interno del servidor');
               } else {
                 // Renderiza la plantilla con los datos de usuarios
                 res.render('mant-empleados.ejs', {
-                  usuarios: results, // Pasa los usuarios a la plantilla
+                  usuarios: usuarios,
                   username: username,
                   login: login,
                   alert: true,
                   alertTitle: 'Error',
-                  alertMenssage: 'Las contraseñas no coinciden',
+                  alertMenssage: errorMessage,
                   alertIcon: "error",
                   showConfirmButton: true,
                   timer: null,
-                  ruta: 'mantenimiento-empleados',
-                  permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+                  ruta: 'mantenimiento-empleados'
+                });
+              }
+            });
+        
+          } else {
+            const username = req.session.name ? req.session.name.loginUsuarios : '';
+            const login = req.session.loggedin;
+            conection.query('SELECT * FROM Usuarios', (error, usuarios) => {
+              if (error) {
+                console.error('Error al obtener datos de Usuarios:', error);
+                res.status(500).send('Error interno del servidor');
+              } else {
+                // Renderiza la plantilla con los datos de usuarios
+                res.render('mant-empleados.ejs', {
+                  usuarios: usuarios, // Pasa los usuarios a la plantilla
+                  username: username,
+                  login: login,
+                  alert: true,
+                  alertTitle: 'Registro',
+                  alertMenssage: 'Se ha registrado exitosamente',
+                  alertIcon: "success",
+                  showConfirmButton: false,
+                  timer: 3000,
+                  ruta: 'mantenimiento-empleados'
                   // ... Otras variables necesarias
                 });
               }
             });
           }
         });
-      } else {
-        res.redirect('/login');
       }
-    } else {
-      // Si las contraseñas coinciden y cumplen con los requisitos, continuar con el registro
-      let contraHash = await bcryptjs.hash(contraseña, 8);
+    };
+  
 
-      conection.query('INSERT INTO Usuarios SET ?', {
-        loginUsuarios: nombre,
-        nombreUsuarios: user,
-        contraseñaUsuarios: contraHash,
-        permisos: permisos
-      }, async (error, results) => {
-        if (error) {
-          console.log(error);
-        } else {
-          if (req.session.loggedin) {
-            const username = req.session.name ? req.session.name.loginUsuarios : '';
-            conection.query('SELECT permisos FROM usuarios WHERE loginUsuarios= ?', [username], (error, results) => {
-              if (error) {
-                console.error('Error al obtener el permiso del usuario:', error);
-              } else {
-                // Supongamos que el permiso se encuentra en results[0].permisos
 
-                // Consulta la base de datos para obtener los usuarios
-                conection.query('SELECT * FROM Usuarios', (error, usuarios) => {
-                  if (error) {
-                    console.error('Error al obtener datos de Usuarios:', error);
-                    res.status(500).send('Error interno del servidor');
-                  } else {
-                    // Renderiza la plantilla con los datos de usuarios
-                    res.render('mant-empleados.ejs', {
-                      usuarios: usuarios, // Pasa los usuarios a la plantilla
-                      username: username,
-                      alert: true,
-                      alertTitle: 'Registro',
-                      alertMenssage: 'Se ha registrado exitosamente',
-                      alertIcon: "success",
-                      showConfirmButton: false,
-                      timer: 3000,
-                      ruta: 'mantenimiento-empleados',
-                      permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
-                      // ... Otras variables necesarias
-                    });
-                  }
-                });
-              }
-            });
-          }
-        }
-      });
+rutaMantEmpleados.confirEditEmp =((req,res)=>{
+
+  const { id, name, nombre, permisos, contra, 'conf-contra': confContra } = req.body;
+console.log(req.body.idUsuario)
+  // Consulta SQL para actualizar un empleado
+  const sql = `
+    UPDATE Usuarios
+    SET loginUsuarios = ? , nombreUsuarios = ?,  permisos = ? , contraseñaUsuarios =?
+    WHERE idUsuarios = ?
+  `;
+
+  // Parámetros para la consulta SQL
+  const params = [name, nombre, permisos,contra, id];
+ console.log(params)
+  conection.query(sql, params, (error, results) => {
+    if (error) {
+      console.error('Error al actualizar el empleado:', error);
+      return res.status(500).send('Error al actualizar el empleado');
     }
-  }
-};
 
+    
+    res.redirect('/mantenimiento-empleados'); // Redirige a la página de mantenimiento de empleados o a donde necesites
+  });
 
+})
 
-export const eliminarUsuario = (userId) => {
-  return new Promise((resolve, reject) => {
-    conection.query('DELETE FROM Usuarios WHERE id = ?', [userId], (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
+rutaMantEmpleados.eliminarUsuario = async (req, res) => {
+  const idUsuario = req.params.id; // Obtiene el ID del usuario desde los parámetros de la URL
+
+  // Consulta SQL para eliminar el usuario por su ID
+  const sql = `DELETE FROM Usuarios WHERE idUsuarios = ?`;
+
+  conection.query(sql, [idUsuario], (err, result) => {
+    if (err) {
+      console.error('Error al eliminar usuario:', err);
+      // Maneja los errores adecuadamente, por ejemplo, redirigiendo a una página de error
+      res.redirect('/error');
+      return;
+    }
+    res.redirect('/mantenimiento-empleados');
   });
 };
 
 
+rutaMantEmpleados.mostrarDetallesEliminarUsuario = (req, res) => {
+  const idUsuario = req.params.id; // Obtiene el ID del usuario de los parámetros de la URL
 
-export const editEmp= (req, res) => {
-  const id = req.params.id;
-  const { nuevoNombre, nuevoLogin, nuevoPermisos } = req.body; // Ajusta esto según los campos que quieras editar
-
-  conection.query(
-    'UPDATE Usuarios SET nombreUsuarios = ?, loginUsuarios = ?, permisos = ? WHERE id = ?',
-    [nuevoNombre, nuevoLogin, nuevoPermisos, id],
-    (error, results) => {
-      if (error) {
-        console.error('Error al actualizar usuario:', error);
-        res.status(500).send('Error interno del servidor');
-      } else {
-        res.redirect('/a');
-      }
-    }
-  );
+ 
+  res.render('eliminar-usuario', { idUsuario });
 };
+
+
+
+
+
+
+
+
+
+
+
+

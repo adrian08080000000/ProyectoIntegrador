@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../public/icon/icon.svg" type="image/x-icon">
+    <title>Mantenimiento Empleados | BENJAMIN</title>
+    <link rel="stylesheet" href="../recursos/css/index.css">
+    <link rel="stylesheet" href="../recursos/css/tabla.css">
+</head>
+<body>
+    <aside class="nav-header">
+        <nav class="nav">
+            <ul class="list">
+        
+                <li class="list__item">
+                    <div class="list__button">
+                        <img src="./recursos/icon/dashboard.svg" class="list__img">
+                        <a href="/" class="nav__link">Inicio</a>
+                    </div>
+                </li>
+        
+                <li class="list__item list__item--click">
+                    <div class="list__button list__button--click">
+                        <img src="./recursos/icon/docs.svg" class="list__img">
+                        <a href="#" class="nav__link">Mantenimiento</a>
+                        <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                    </div>
+                    
+                    <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Empleados</a>
+                        </li>
+        
+                        <li class="list__inside">
+                            <a href="#" class="nav__link nav__link--inside"> Socios</a>
+                        </li>
+        
+                        <li class="list__inside">
+                          <a href="/mantenimiento-ahorros" class="nav__link nav__link--inside">Cuentas Ahorros</a>
+                      </li>
+                      <li class="list__inside">
+                        <a href="/mantenimiento-prestamos" class="nav__link nav__link--inside">Prestamos</a>
+                    </li>
+                    </ul>
+        
+                    </li>
+        
+                    <li class="list__item list__item--click">
+                      <div class="list__button list__button--click">
+                          <img src="./recursos/icon/stats.svg" class="list__img">
+                          <a href="#" class="nav__link">Transacciones</a>
+                          <img src="./recursos/icon/arrow.svg" class="list__arrow">
+                      </div>
+                      <ul class="list__show">
+                        <li class="list__inside">
+                            <a href="/mantenimiento-empleados" class="nav__link nav__link--inside">Deposito</a>
+                        </li>
+        
+                        <li class="list__inside">
+                            <a href="#" class="nav__link nav__link--inside"> Retiro</a>
+                        </li>
+        
+                        <li class="list__inside">
+                          <a href="#" class="nav__link nav__link--inside">Pago</a>
+                      </li>
+                     
+                    </ul>
+                  </li>
+                    <li class="list__item">
+                      <div class="list__button">
+                          <img src="./recursos/icon/dashboard.svg" class="list__img">
+                          <a href="/cerrar-sesion" class="nav__link" id="cerrar-sesion">Cerra sesion</a>
+                      </div>
+                  </li>
+                
+        
+        </nav>
+      
+      <header class="header bg-success">
+
+
+
+        <% if (typeof username !== 'undefined') { %>
+            <h1  style="font-size: 20px;" class="text-white ph">Pagina/ Mantenimiento Empleados</h1>
+            <p class="text-white ph">Bienvenido, <%= username %>!</p>
+        <% } else { %>
+            <p>No has iniciado sesión.</p>
+        <% } %>
+      
+      </header>
+      
+      <main class="principal">
+
+        <div class="card-header">
+            <h1>Creacion de usuarios :</h1>
+        <div class="card-body">
+            <form id="formulario-edicion" action="/crear-empleado" method="post">
+                    <input type="hidden" id="idUsuarios" name="idUsuarios">
+                    <div class="mb-3">
+                        <label class="form-label" for="nombre">Nombre :</label>
+                        <input class="form-control" type="text" name="nombre" id="nombre">
+                    </div>
+                    
+                    <div class="mb-3" >
+                        <label class="form-label" for="login">Nombre de usuario :</label>
+                        <input class="form-control" type="text"  id="login" name="login"> 
+                    </div>
+                  
+
+                    <label  > Permisos :</label>
+                    <input class="" type="radio" value="Admin" name="permisos"> Administrador
+                    <input type="radio" value="normal" name="permisos"> Normal <br><br>
+
+                    <label class="form-label" for="contra">Contraseña :</label>
+                    <input class="form-control" type="password" name="contra" id="contra">
+                    <br><br>
+                    <label for="conf-contra">Confirmar contraseña :</label> 
+                    <input class="form-control" type="password"  id="conf-contra" name="confcontra">
+                    <br><br>
+                    <button type="submit" id="crear" class="btn btn-success">Crear</button>
+                   
+            </form>
+        </div>
+        </div>
+        <div>
+            <table id="tabla-usuarios" class="table table-bordered table-striped text-center">
+                <thead>
+                <tr class="bg-success text-white">
+                  <th scope="col">ID</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Login</th>
+                  <th scope="col">Permisos</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <% usuarios.forEach(usuario => { %>
+                      <tr class="fila" data-id="<%= usuario.idUsuarios %>">
+                        <td><%= usuario.idUsuarios %></td>
+                        <td><%= usuario.nombreUsuarios %></td>
+                        <td><%= usuario.loginUsuarios %></td>
+                        <td><%= usuario.permisos %></td>
+                        <td>
+                            <button class="editar-btn-1 btn btn-info" >Editar</button>
+
+                         <button class="btn btn-danger" id="botonEliminar">Eliminar</button>
+                        </td>
+                      </tr>
+                    <% }); %>
+                  </tbody>
+              </table>
+        </div>
+
+   
+
+      </main>
+      </aside>
+
+      <script src="./recursos/javaScript/barraLateral.js"></script>
+      <script src="./recursos/javaScript/tabla.js"></script>
+      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <% if (typeof alert != "undefined") { %>
+      <script>
+          Swal.fire({
+              title: '<%= alertTitle %>',
+              text: '<%= alertMenssage %>',
+              icon: '<%= alertIcon %>',
+              showConfirmButton: '<%= showConfirmButton%>',
+              timer: '<%= timer%>'
+          }).then((result) => {
+            window.location.href = '/<%= ruta %>'
+          });
+      </script>
+      <% } %>
+     
+
+</body>
+</html>
+
+
+
+

@@ -37,7 +37,6 @@ rutasdeposito.CreacionDeposito = (req, res) => {
       if (error) {
         console.error('Error al obtener el permiso del usuario:', error);
       } else {
-        // Supongamos que el permiso se encuentra en results[0].permisos
         const permisoUsuario = results[0].permisos;
   
         // Consulta la base de datos para verificar si la cuenta existe
@@ -71,6 +70,7 @@ rutasdeposito.CreacionDeposito = (req, res) => {
                             console.error('Error al insertar la transacción:', error);
                           } else {
                             const loggedIn = req.session.loggedin || false;
+                            const errorMensaje = '';
                             if (loggedIn) {
                               res.render('deposito-cuenta.ejs', {
                                 permisoUsuario: permisoUsuario,
@@ -83,7 +83,8 @@ rutasdeposito.CreacionDeposito = (req, res) => {
                                 alertIcon: "success",
                                 showConfirmButton: true,
                                 timer: null,
-                                ruta: 'realizar-deposito'
+                                ruta: 'realizar-deposito',
+                                error: errorMensaje,
                               });
                             } else {
                               res.render('login.ejs', {});
@@ -101,7 +102,6 @@ rutasdeposito.CreacionDeposito = (req, res) => {
                         if (error) {
                           console.error('Error al obtener el permiso del usuario:', error);
                         } else {
-                          // Supongamos que el permiso se encuentra en results[0].permisos
                           const permisoUsuario = results[0].permisos;
                           res.render('deposito-cuenta.ejs', {
                             username,

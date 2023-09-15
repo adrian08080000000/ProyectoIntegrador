@@ -99,12 +99,12 @@
                 
                 <div class="mb-3">
                     <label class="form-label" id="nombre">Coloque el numero de la cuenta de ahorro:</label>
-                <input class="form-control" type="text" name="cuenta" id="numero"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                <input class="form-control" type="text" name="cuenta" id="numero"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required>
                 </div>
                 
                 <div class="mb-3" >
                     <label class="form-label" for="monto" id="monto">Monto a Retirar:</label>
-                    <input class="form-control" type="text"  id="numero2" name="monto"> 
+                    <input class="form-control" type="text"  id="numero2" name="monto" required> 
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Realizar retiro</button>

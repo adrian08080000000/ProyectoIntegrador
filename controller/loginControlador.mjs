@@ -79,19 +79,17 @@ export const autLogin=async(req,res)=>{
 export const Aut = (req, res, error, sesionCerrada = false) => {
   if (req.session.loggedin) {
     const username = req.session.name ? req.session.name.loginUsuarios : '';
-    // Realiza una consulta para obtener el permiso del usuario desde la DB
     conection.query('SELECT permisos FROM usuarios WHERE loginUsuarios= ?', [username], (error, results) => {
         if (error) {
             console.error('Error al obtener el permiso del usuario:', error);
         } else {
-            // Supongamos que el permiso se encuentra en results[0].permisos
             const permisoUsuario = results[0].permisos;
             res.render('index.ejs', {
               login: true,
               name: username,
               error: error,
               sesionCerrada: sesionCerrada,
-              permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+              permisoUsuario: permisoUsuario
             });
         }
     });
@@ -102,24 +100,6 @@ export const Aut = (req, res, error, sesionCerrada = false) => {
     });
   }
 };
-
-// export const Aut = (req, res, error, sesionCerrada = false) => {
-//   if (req.session.loggedin) {
-//     const username = req.session.name ? req.session.name.loginUsuarios : '';
-//     res.render('index.ejs', {
-//       login: true,
-//       name: username,
-//       error: error,
-//       sesionCerrada: sesionCerrada // Pasa sesionCerrada a la vista
-//     });
-//   } else {
-//     res.render('login.ejs', {
-//       error: error,
-//       sesionCerrada: sesionCerrada // Pasa sesionCerrada a la vista
-//     });
-//   }
-// };
-// controlador de cierre de session 
 
 export const logAut=(req,res)=>{
   req.session.destroy(()=>{

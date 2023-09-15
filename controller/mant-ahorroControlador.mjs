@@ -9,7 +9,6 @@ rutasahorros.ahorros = (req, res) => {
       if (error) {
         console.error('Error al obtener el permiso del usuario:', error);
       } else {
-        // Supongamos que el permiso se encuentra en results[0].permisos
         const permisoUsuario = results[0].permisos;
 
         conection.query('SELECT * FROM cuentaahorros', (error, results) => {
@@ -20,7 +19,7 @@ rutasahorros.ahorros = (req, res) => {
             res.render('mant-ahorros.ejs', {
               usuarios: results,
               username,
-              permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+              permisoUsuario: permisoUsuario
             });
           }
         });
@@ -39,12 +38,11 @@ rutasahorros.CreacionAhorro = (req, res) => {
       if (error) {
         console.error('Error al obtener el permiso del usuario:', error);
       } else {
-        // Supongamos que el permiso se encuentra en results[0].permisos
         const permisoUsuario = results[0].permisos;
         res.render('crea-Ahorro.ejs', {
           username,
           error: errorMensaje,
-          permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+          permisoUsuario: permisoUsuario
         });
       }
     });
@@ -84,7 +82,6 @@ export const CreaAhorro = (req, res) => {
                 if (error) {
                   console.error('Error al obtener el permiso del usuario:', error);
                 } else {
-                  // Supongamos que el permiso se encuentra en results[0].permisos
                   const permisoUsuario = results[0].permisos;
 
                   res.render('crea-Ahorro.ejs', {
@@ -99,7 +96,7 @@ export const CreaAhorro = (req, res) => {
                     timer: null,
                     ruta: 'mantenimiento-ahorros',
                     error: errorMensaje,
-                    permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+                    permisoUsuario: permisoUsuario
                   });
                 }
               });
@@ -114,13 +111,12 @@ export const CreaAhorro = (req, res) => {
           if (error) {
             console.error('Error al obtener el permiso del usuario:', error);
           } else {
-            // Supongamos que el permiso se encuentra en results[0].permisos
             const permisoUsuario = results[0].permisos;
             const errorMensaje = 'No se encontraron socios con esa cédula.';
             res.render('crea-Ahorro.ejs', {
               username,
               error: errorMensaje,
-              permisoUsuario: permisoUsuario // Pasa permisoUsuario a la vista
+              permisoUsuario: permisoUsuario
             });
           }
         });

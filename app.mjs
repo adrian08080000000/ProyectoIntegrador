@@ -24,7 +24,7 @@ import {autSesion} from './controller/loginControlador.mjs';
 
 
 import { autLogin,sesion ,Aut,logAut} from './controller/loginControlador.mjs';
-import {registroEmpleados ,editEmp} from './controller/mant-empleados.mjs'
+import {registroEmpleados ,editEmp,rutaMantEmpleados} from './controller/mant-empleados.mjs'
 import { CreaAhorro } from './controller/mant-ahorroControlador.mjs';
 import {CrearDeposito} from './controller/deposito-controlador.mjs'
 import { CrearRetiro } from './controller/retiro-controlador.mjs';
@@ -55,6 +55,15 @@ app.post('/realizar-deposito',CrearDeposito)
 
 //creacion retiro
 app.post('/realizar-retiro',CrearRetiro)
+
+// Creación de empleados, edicion  y eliminación
+app.post('/crear-empleado', registroEmpleados);
+
+app.get('/editar-empleado/:id',rutas)
+app.post('/mantenimiento-empleados', rutas)
+app.get('/mantenimiento-empleados/:id',rutas)
+app.delete('/mantenimiento-empleados/:id',rutas)
+app.get('/eliminar-empleados/:id', rutaMantEmpleados.eliminarUsuario);
 
 //registro
 

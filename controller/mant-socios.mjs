@@ -115,7 +115,6 @@ export const buscarSoc = (req, res) => {
     conection.query('SELECT * FROM socios WHERE cedulaSocio = ?', [cedula], (error, results) => {
         if (error) {
             console.log(error);
-            // Maneja el error, por ejemplo, muestra un mensaje de error al usuario
             res.render('Mant-socios.ejs', {
                 alert: true,
                 alertTitle: 'Error',
@@ -144,7 +143,6 @@ export const buscarSoc = (req, res) => {
                     socio: socio
                 });
             } else {
-                // Si no se encontró ningún registro, muestra un mensaje de error
                 console.log('Consulta SQL:', 'SELECT * FROM socios WHERE cedulaSocio = ?', [cedula]);
                 res.render('Mant-socios.ejs', {
                     alert: true,
