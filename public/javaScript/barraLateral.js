@@ -49,7 +49,7 @@ listElements.forEach(listElement => {
 
 
 const
- cerrarSesionButton = document.getElementById('cerrar-sesion'); // Reemplaza con el selector de tu botón de cierre de sesión
+ cerrarSesionButton = document.getElementById('cerrar-sesion'); 
 
 cerrarSesionButton.addEventListener('click', () => {
   console.log("a")
@@ -72,3 +72,4 @@ cerrarSesionButton.addEventListener('click', () => {
       console.error(error);
     });
 });
+

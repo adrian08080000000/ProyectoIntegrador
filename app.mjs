@@ -79,7 +79,6 @@ app.get('/edit/:id', (req, res) => {
 });
 
 app.post('/editar/:id',editEmp)
-//Creacion miembro
 
   
 
