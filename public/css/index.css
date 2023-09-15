@@ -129,24 +129,30 @@ li a:active{
     text-decoration: none;
 }
 
-/* .p2{
+
+.title-grafica{
     font-size: 30px;
-    padding: 30px;
-    font-weight: bold;
+    padding: 8px;
+    font-weight: 600;
+    text-align: center;
+    border-top: rgb(230, 230, 230) solid 1px;
+    border-bottom: rgb(230, 230, 230) solid 1px;
 }
-    
-.div1-ahorro{
-    display: flex;
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: auto;
+    margin-top: 2em;
+    gap: 4em;
 }
-    
-    
-.principal{
-    position: absolute;
-    top: 10%;
-    left: 24%;
-    
-    width: 950px;
-    height: auto;
-    margin-bottom: 100px;
-    
-} */
+
+.grafica img{
+    width: 150px;
+    margin-right: 1.5em;
+}
+
+.grafica span{
+    font-family: 'Poppins', sans-serif;
+    font-size: 22px;
+}
